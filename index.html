@@ -2340,339 +2340,524 @@
 
 
       <!-- CHALLENGES & PROBLEM SOLVING -->
-      <section id="challenges" class="py-20 bg-gradient-to-t from-black/30 to-transparent">
-        <div class="container mx-auto px-6">
-          <div class="flex flex-col md:flex-row items-start gap-12">
-            <!-- Left Column -->
-            <div class="md:w-1/3 fade-in-left">
-              <h2 class="text-4xl font-extrabold text-blue-300 leading-tight mb-4">
-                ISS
-                <span class="block text-3xl text-blue-200 mt-2">Challenges and Engineering Solutions</span>
-              </h2>
-              <p class="text-gray-300 mt-4 text-lg leading-relaxed">
-                Since 1998, the ISS has faced unprecedented challenges in the harsh environment of space.
-                Our engineers have developed innovative solutions to keep this marvel of human achievement operational
-                400km
-                above Earth.
-              </p>
+      <section id="challenges"
+        class="py-12 md:py-20 bg-black via-purple-950/80 to-black/90 relative overflow-hidden min-h-screen">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0">
+          <div class="stars-field absolute inset-0"></div>
+          <div class="orbital-lines absolute inset-0 opacity-20"></div>
+          <div class="floating-particles absolute inset-0"></div>
+        </div>
 
-              <!-- Engineering Overview -->
-              <div
-                class="mt-8 p-6 bg-gradient-to-br from-blue-900/30 to-purple-900/20 rounded-xl border border-blue-500/30">
-                <h3 class="text-xl font-bold text-blue-200 mb-4 flex items-center">
-                  <span class="w-2 h-2 bg-blue-400 rounded-full mr-3 animate-pulse"></span>
-                  Engineering Excellence
-                </h3>
-                <div class="space-y-3 text-sm text-gray-300">
-                  <p>Every challenge in space requires innovative thinking. Our articles showcase real engineering
-                    crises and
-                    the brilliant solutions that kept humanity's greatest laboratory operational.</p>
-                  <div class="bg-black/20 rounded-lg p-3 mt-4">
-                    <div class="text-blue-300 text-xs font-semibold mb-2">Problem-Solving Approach:</div>
-                    <ol class="text-xs text-gray-300 space-y-1">
-                      <li>1. Rapid diagnosis under extreme constraints</li>
-                      <li>2. International collaboration for solutions</li>
-                      <li>3. Real-time implementation with zero margin for error</li>
-                      <li>4. Continuous monitoring and optimization</li>
-                    </ol>
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+          <!-- Real-time ISS Status Bar -->
+          <div class="mb-8 md:mb-12 fade-in-down">
+            <div
+              class="bg-gradient-to-r from-blue-900/40 to-purple-900/40 backdrop-blur-lg border border-blue-500/30 rounded-2xl p-6 shadow-2xl">
+              <div class="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
+                <div class="flex items-center space-x-4">
+                  <div class="w-4 h-4 bg-green-400 rounded-full animate-pulse-glow"></div>
+                  <h3 class="text-xl font-bold text-green-300">ISS Live Status</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                  <div class="real-time-stat">
+                    <div class="text-2xl font-mono font-bold text-blue-300" id="iss-altitude">408</div>
+                    <div class="text-xs text-gray-300 mt-1">Altitude (km)</div>
+                  </div>
+                  <div class="real-time-stat">
+                    <div class="text-2xl font-mono font-bold text-yellow-300" id="iss-speed">27,600</div>
+                    <div class="text-xs text-gray-300 mt-1">Speed (km/h)</div>
+                  </div>
+                  <div class="real-time-stat">
+                    <div class="text-2xl font-mono font-bold text-purple-300" id="orbit-time">92:15</div>
+                    <div class="text-xs text-gray-300 mt-1">Orbit Time (min)</div>
+                  </div>
+                  <div class="real-time-stat">
+                    <div class="text-2xl font-mono font-bold text-green-300" id="crew-count">7</div>
+                    <div class="text-xs text-gray-300 mt-1">Crew Members</div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Key Facts Cards - Condensed -->
-              <div class="mt-6 space-y-3">
-                <div class="p-3 bg-blue-900/20 rounded-lg border-l-4 border-blue-400">
-                  <p class="text-blue-200 text-sm font-medium">Operating continuously for over 25 years at 27,600 km/h
-                  </p>
-                </div>
-
-                <div class="p-3 bg-green-900/20 rounded-lg border-l-4 border-green-400">
-                  <div class="text-green-200 text-sm font-medium">Mission Success</div>
-                  <p class="text-green-300 text-xs mt-1">273+ astronauts • 15 nations • 109 billion miles traveled</p>
-                </div>
-
-                <div class="p-3 bg-purple-900/20 rounded-lg border-l-4 border-purple-400">
-                  <div class="text-purple-200 text-sm font-medium">Scale & Impact</div>
-                  <p class="text-purple-300 text-xs mt-1">Football field size • 450 tons mass • 3000+ experiments</p>
+                <div class="text-center">
+                  <div class="text-sm text-blue-200 font-semibold">Current Location:</div>
+                  <div class="text-xs text-gray-300" id="iss-location">Updating...</div>
+                  <div class="text-xs text-gray-400 mt-1" id="last-update">Last update: --:--</div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <!-- Active Article Display -->
-              <div id="active-article" class="mt-6 hidden">
+          <div class="flex flex-col xl:flex-row items-start gap-8 lg:gap-12">
+            <!-- Left Column - Enhanced -->
+            <div class="xl:w-2/5 fade-in-left">
+              <div class="space-y-8">
+                <!-- Main Header with Holographic Effect -->
+                <div class="relative">
+                  <h2
+                    class="text-5xl font-extrabold bg-gradient-to-r from-cyan-300 via-blue-300 to-purple-400 bg-clip-text text-transparent leading-tight mb-4">
+                    ISS
+                    <span
+                      class="block text-4xl bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent mt-2">
+                      Engineering Challenges
+                    </span>
+                  </h2>
+                  <div class="absolute -inset-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-3xl blur-xl">
+                  </div>
+                </div>
+
+                <p
+                  class="text-gray-300 text-lg leading-relaxed backdrop-blur-sm bg-black/20 p-6 rounded-2xl border border-white/10 text-justify">
+                  Since 1998, the ISS has faced unprecedented challenges in the harsh environment of space.
+                  Our engineers have developed innovative solutions to keep this marvel of human achievement operational
+                  <span class="text-blue-300 font-semibold">400km above Earth</span>.
+                </p>
+
+                <!-- Current Mission Info -->
                 <div
-                  class="p-5 bg-gradient-to-br from-gray-900/80 to-black/60 rounded-xl border border-gray-600/50 backdrop-blur-sm">
-                  <div class="flex items-center justify-between mb-3">
-                    <h4 class="text-lg font-semibold text-white" id="active-title">Article Title</h4>
-                    <button id="close-article" class="text-gray-400 hover:text-white text-xl">&times;</button>
+                  class="bg-gradient-to-br from-indigo-900/40 to-purple-900/30 backdrop-blur-lg rounded-2xl border border-indigo-500/30 p-6 shadow-2xl">
+                  <h3 class="text-xl font-bold text-indigo-200 mb-4 flex items-center">
+                    <span class="w-3 h-3 bg-indigo-400 rounded-full mr-3 animate-pulse-glow"></span>
+                    Current Mission: Expedition 72
+                  </h3>
+                  <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div class="crew-member bg-black/30 rounded-xl p-4">
+                        <div class="text-blue-300 text-sm font-semibold">Commander</div>
+                        <div class="text-white font-medium">Suni Williams</div>
+                        <div class="text-xs text-gray-400">NASA • Extended Mission</div>
+                      </div>
+                      <div class="crew-member bg-black/30 rounded-xl p-4">
+                        <div class="text-green-300 text-sm font-semibold">Flight Engineer</div>
+                        <div class="text-white font-medium">Butch Wilmore</div>
+                        <div class="text-xs text-gray-400">NASA • Test Pilot</div>
+                      </div>
+                    </div>
+                    <div class="bg-black/20 rounded-lg p-3">
+                      <div class="text-cyan-300 text-xs font-semibold mb-2">Mission Highlights:</div>
+                      <ul class="text-xs text-gray-300 space-y-1">
+                        <li>• Continuous scientific research and experiments</li>
+                        <li>• Advanced life support system optimization</li>
+                        <li>• International collaboration demonstrations</li>
+                        <li>• Technology validation for future missions</li>
+                      </ul>
+                    </div>
                   </div>
-                  <div class="text-sm text-gray-300 leading-relaxed" id="active-content">
-                    Article content will appear here...
+                </div>
+
+                <!-- Real-time Stats Cards -->
+                <div class="space-y-4">
+                  <div
+                    class="stat-card bg-gradient-to-r from-blue-900/30 to-cyan-900/20 backdrop-blur-sm rounded-xl border-l-4 border-blue-400 p-4 shadow-lg">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-blue-200 text-sm font-medium">Orbital Velocity</div>
+                        <div class="text-2xl font-mono font-bold text-blue-300" id="velocity-display">7.66 km/s</div>
+                      </div>
+                      <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-blue-400 text-xl">🚀</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="stat-card bg-gradient-to-r from-green-900/30 to-emerald-900/20 backdrop-blur-sm rounded-xl border-l-4 border-green-400 p-4 shadow-lg">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-green-200 text-sm font-medium">Mission Success</div>
+                        <div class="text-xs text-green-300 mt-1">
+                          <span class="font-mono text-lg text-green-300" id="mission-days">9,487</span> days operational
+                        </div>
+                      </div>
+                      <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-green-400 text-xl">✨</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="stat-card bg-gradient-to-r from-purple-900/30 to-pink-900/20 backdrop-blur-sm rounded-xl border-l-4 border-purple-400 p-4 shadow-lg">
+                    <div class="flex items-center justify-between">
+                      <div>
+                        <div class="text-purple-200 text-sm font-medium">Distance Traveled</div>
+                        <div class="text-xs text-purple-300 mt-1">
+                          <span class="font-mono text-lg text-purple-300" id="total-distance">4.2B</span> kilometers
+                        </div>
+                      </div>
+                      <div class="w-12 h-12 bg-purple-500/20 rounded-full flex items-center justify-center">
+                        <span class="text-purple-400 text-xl">🌍</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Active Article Display -->
+                <div id="active-article" class="hidden">
+                  <div
+                    class="bg-gradient-to-br from-gray-900/90 to-black/80 backdrop-blur-xl rounded-2xl border border-gray-600/50 p-6 shadow-2xl">
+                    <div class="flex items-center justify-between mb-4">
+                      <h4 class="text-xl font-semibold text-white" id="active-title">Article Title</h4>
+                      <button id="close-article"
+                        class="text-gray-400 hover:text-white text-2xl hover:rotate-90 transition-all duration-300">&times;</button>
+                    </div>
+                    <div class="text-sm text-gray-300 leading-relaxed" id="active-content">
+                      Article content will appear here...
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- Right Column -->
-            <div class="md:w-2/3 fade-in-right">
-              <!-- Challenge Cards -->
-              <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Right Column - Enhanced Challenge Cards -->
+            <div class="xl:w-3/5 fade-in-right">
+              <!-- Challenge Cards Grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8 md:mb-12">
                 <div
-                  class="challenge-card rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/15">
-                  <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mr-3">
-                      <span class="text-red-400 text-xl">🌡️</span>
-                    </div>
-                    <h4 class="font-semibold text-lg text-white">Thermal & Radiation Management</h4>
+                  class="challenge-card group relative rounded-3xl bg-gradient-to-br from-red-900/20 via-red-800/10 to-transparent backdrop-blur-sm border border-red-500/20 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-red-400/40">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   </div>
-                  <p class="text-sm text-gray-300 leading-relaxed mb-3">
-                    Space temperatures range from -157°C to +121°C. Engineers developed multi-layer insulation (MLI)
-                    blankets
-                    and radiator panels.
-                  </p>
-                  <div class="text-xs text-blue-300 font-medium">
-                    Solution: Advanced thermal control systems with ammonia coolant loops
+                  <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                      <div
+                        class="w-14 h-14 bg-gradient-to-br from-red-500/30 to-red-600/20 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-red-400 text-2xl">🌡️</span>
+                      </div>
+                      <h4 class="font-bold text-xl text-white group-hover:text-red-100 transition-colors duration-300">
+                        Thermal & Radiation</h4>
+                    </div>
+                    <p
+                      class="text-gray-300 leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                      Extreme temperature swings from -157°C to +121°C. Engineers developed multi-layer insulation
+                      blankets and advanced radiator panels.
+                    </p>
+                    <div class="text-sm text-red-300 font-semibold bg-red-900/20 rounded-lg p-3">
+                      Solution: Ammonia coolant loops & thermal control systems
+                    </div>
                   </div>
                 </div>
 
                 <div
-                  class="challenge-card rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/15">
-                  <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 bg-yellow-500/20 rounded-full flex items-center justify-center mr-3">
-                      <span class="text-yellow-400 text-xl">💫</span>
-                    </div>
-                    <h4 class="font-semibold text-lg text-white">Micro-meteoroids & Space Debris</h4>
+                  class="challenge-card group relative rounded-3xl bg-gradient-to-br from-yellow-900/20 via-yellow-800/10 to-transparent backdrop-blur-sm border border-yellow-500/20 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-yellow-400/40">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   </div>
-                  <p class="text-sm text-gray-300 leading-relaxed mb-3">
-                    Over 34,000 trackable debris objects threaten the station. Impact velocities can exceed 28,000 km/h.
-                  </p>
-                  <div class="text-xs text-blue-300 font-medium">
-                    Solution: Whipple shields, debris avoidance maneuvers, and real-time tracking
+                  <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                      <div
+                        class="w-14 h-14 bg-gradient-to-br from-yellow-500/30 to-yellow-600/20 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-yellow-400 text-2xl">💫</span>
+                      </div>
+                      <h4
+                        class="font-bold text-xl text-white group-hover:text-yellow-100 transition-colors duration-300">
+                        Space Debris Defense</h4>
+                    </div>
+                    <p
+                      class="text-gray-300 leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                      Over 34,000 trackable debris objects. Impact velocities exceed 28,000 km/h, requiring constant
+                      vigilance.
+                    </p>
+                    <div class="text-sm text-yellow-300 font-semibold bg-yellow-900/20 rounded-lg p-3">
+                      Solution: Whipple shields, avoidance maneuvers & real-time tracking
+                    </div>
                   </div>
                 </div>
 
                 <div
-                  class="challenge-card rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/15">
-                  <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                      <span class="text-green-400 text-xl">🚀</span>
-                    </div>
-                    <h4 class="font-semibold text-lg text-white">Complex Resupply Operations</h4>
+                  class="challenge-card group relative rounded-3xl bg-gradient-to-br from-green-900/20 via-green-800/10 to-transparent backdrop-blur-sm border border-green-500/20 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-green-400/40">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   </div>
-                  <p class="text-sm text-gray-300 leading-relaxed mb-3">
-                    Delivering 2-3 tons of supplies annually requires precise orbital mechanics and automated docking
-                    systems.
-                  </p>
-                  <div class="text-xs text-blue-300 font-medium">
-                    Solution: Commercial Crew & Cargo programs with SpaceX Dragon, Northrop Grumman Cygnus
+                  <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                      <div
+                        class="w-14 h-14 bg-gradient-to-br from-green-500/30 to-green-600/20 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-green-400 text-2xl">🚀</span>
+                      </div>
+                      <h4
+                        class="font-bold text-xl text-white group-hover:text-green-100 transition-colors duration-300">
+                        Precision Resupply</h4>
+                    </div>
+                    <p
+                      class="text-gray-300 leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                      Delivering 2-3 tons annually requires precise orbital mechanics and autonomous docking systems.
+                    </p>
+                    <div class="text-sm text-green-300 font-semibold bg-green-900/20 rounded-lg p-3">
+                      Solution: Commercial Crew & Cargo with SpaceX Dragon, Northrop Grumman
+                    </div>
                   </div>
                 </div>
 
                 <div
-                  class="challenge-card rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 p-6 shadow-md hover:shadow-lg transition-all duration-300 hover:scale-105 hover:bg-white/15">
-                  <div class="flex items-center mb-3">
-                    <div class="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center mr-3">
-                      <span class="text-purple-400 text-xl">⚙️</span>
-                    </div>
-                    <h4 class="font-semibold text-lg text-white">System Aging & Maintenance</h4>
+                  class="challenge-card group relative rounded-3xl bg-gradient-to-br from-purple-900/20 via-purple-800/10 to-transparent backdrop-blur-sm border border-purple-500/20 p-8 shadow-xl hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] hover:border-purple-400/40">
+                  <div
+                    class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   </div>
-                  <p class="text-sm text-gray-300 leading-relaxed mb-3">
-                    Critical systems face constant wear from radiation, thermal cycling, and vibration over decades of
-                    operation.
-                  </p>
-                  <div class="text-xs text-blue-300 font-medium">
-                    Solution: Modular design, EVA repairs, robotic servicing missions
+                  <div class="relative z-10">
+                    <div class="flex items-center mb-4">
+                      <div
+                        class="w-14 h-14 bg-gradient-to-br from-purple-500/30 to-purple-600/20 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
+                        <span class="text-purple-400 text-2xl">⚙️</span>
+                      </div>
+                      <h4
+                        class="font-bold text-xl text-white group-hover:text-purple-100 transition-colors duration-300">
+                        System Longevity</h4>
+                    </div>
+                    <p
+                      class="text-gray-300 leading-relaxed mb-4 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                      25+ years of operation with constant radiation, thermal cycling, and vibration challenges.
+                    </p>
+                    <div class="text-sm text-purple-300 font-semibold bg-purple-900/20 rounded-lg p-3">
+                      Solution: Modular design, EVA repairs, robotic servicing missions
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Statistics Section -->
-              <div class="mt-10">
-                <h5 class="font-semibold text-white text-xl mb-6 flex items-center">
-                  <span class="pulse-dot w-3 h-3 bg-blue-400 rounded-full mr-3"></span>
-                  Engineering Solutions in Action
+              <!-- Enhanced Statistics Section -->
+              <div class="mt-12">
+                <h5 class="font-bold text-white text-2xl mb-8 flex items-center">
+                  <span class="pulse-dot w-4 h-4 bg-cyan-400 rounded-full mr-4"></span>
+                  Mission Analytics Dashboard
                 </h5>
 
-                <!-- Statistics Bar -->
-                <div class="grid grid-cols-3 gap-4 mb-6 p-4 bg-black/20 rounded-lg">
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-blue-400 counter" data-target="25">0</div>
-                    <div class="text-xs text-gray-400">Years Operating</div>
+                <!-- Real-time Statistics Bar -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                  <div
+                    class="bg-gradient-to-br from-blue-900/40 to-indigo-900/30 backdrop-blur-lg rounded-2xl p-6 border border-blue-500/30 shadow-xl">
+                    <div class="text-center">
+                      <div class="text-4xl font-bold text-blue-400 counter mb-2" data-target="26">0</div>
+                      <div class="text-sm text-blue-200 font-medium">Years Operating</div>
+                      <div class="text-xs text-gray-400 mt-1">Since Nov 1998</div>
+                    </div>
                   </div>
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-green-400 counter" data-target="260">0</div>
-                    <div class="text-xs text-gray-400">EVAs Completed</div>
+                  <div
+                    class="bg-gradient-to-br from-green-900/40 to-emerald-900/30 backdrop-blur-lg rounded-2xl p-6 border border-green-500/30 shadow-xl">
+                    <div class="text-center">
+                      <div class="text-4xl font-bold text-green-400 counter mb-2" data-target="273">0</div>
+                      <div class="text-sm text-green-200 font-medium">EVAs Completed</div>
+                      <div class="text-xs text-gray-400 mt-1">Spacewalks</div>
+                    </div>
                   </div>
-                  <div class="text-center">
-                    <div class="text-2xl font-bold text-yellow-400 counter" data-target="3000">0</div>
-                    <div class="text-xs text-gray-400">Experiments Conducted</div>
+                  <div
+                    class="bg-gradient-to-br from-purple-900/40 to-pink-900/30 backdrop-blur-lg rounded-2xl p-6 border border-purple-500/30 shadow-xl">
+                    <div class="text-center">
+                      <div class="text-4xl font-bold text-purple-400 counter mb-2" data-target="3200">0</div>
+                      <div class="text-sm text-purple-200 font-medium">Experiments</div>
+                      <div class="text-xs text-gray-400 mt-1">Scientific Studies</div>
+                    </div>
                   </div>
                 </div>
 
-                <!-- Engineering Articles Section -->
-                <div class="mt-8">
-                  <h6 class="font-semibold text-white text-lg mb-6 flex items-center">
-                    <span class="w-3 h-3 bg-green-400 rounded-full mr-3"></span>
-                    Featured Engineering Problem-Solving Articles
-                  </h6>
+                <!-- Featured Engineering Articles -->
+                <h6 class="font-bold text-white text-xl mb-8 flex items-center">
+                  <span class="w-4 h-4 bg-gradient-to-r from-green-400 to-cyan-400 rounded-full mr-4"></span>
+                  Critical Engineering Solutions Archive
+                </h6>
 
-                  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Article 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+                  <!-- Article cards with enhanced styling -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-blue-500/20 shadow-xl bg-gradient-to-br from-blue-900/20 to-indigo-900/10 backdrop-blur-sm hover:border-blue-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-blue-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-blue-400 text-sm">🔧</span>
-                          </div>
-                          <div class="text-xs text-blue-300 font-medium">NASA Technical Report</div>
+                      class="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-blue-500/30 to-blue-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-blue-400 text-lg">🔧</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Ammonia Coolant Loop Leak Crisis: How Engineers Saved the ISS
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          In 2013, a critical ammonia leak threatened the entire station. Discover how engineers used
-                          innovative EVA techniques and rapid troubleshooting to restore thermal control systems within
-                          48
-                          hours.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Engineering Solution</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="ammonia-leak">Learn More →</button>
-                        </div>
+                        <div class="text-xs text-blue-300 font-semibold bg-blue-900/30 px-3 py-1 rounded-full">NASA
+                          Technical Report</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-blue-100 transition-colors duration-300">
+                        Ammonia Coolant Loop Crisis: Emergency System Recovery
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        Critical ammonia leak threatened entire station. Engineers used innovative EVA techniques to
+                        restore thermal systems within 48 hours.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <!-- <div class="text-xs text-blue-300 bg-blue-900/20 px-2 py-1 rounded-full">Thermal Control</div> -->
+                        <button
+                          class="learn-more-btn text-blue-400 text-sm hover:text-blue-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="ammonia-leak">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Article 2 -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-red-500/20 shadow-xl bg-gradient-to-br from-red-900/20 to-orange-900/10 backdrop-blur-sm hover:border-red-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-red-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-red-400 text-sm">⚡</span>
-                          </div>
-                          <div class="text-xs text-red-300 font-medium">Emergency Response</div>
+                      class="absolute inset-0 bg-gradient-to-br from-red-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-red-500/30 to-red-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-red-400 text-lg">⚡</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Solar Array Power Crisis: Real-time Problem Solving in Orbit
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          When a solar array failed to deploy properly, engineers had just 90 minutes per orbit to
-                          troubleshoot. Learn how ground teams and astronauts collaborated to restore full power
-                          generation.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Power Systems</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="solar-array">Learn More →</button>
-                        </div>
+                        <div class="text-xs text-red-300 font-semibold bg-red-900/30 px-3 py-1 rounded-full">Emergency
+                          Response</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-red-100 transition-colors duration-300">
+                        Solar Array Power Crisis: 90-Minute Window Solutions
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        Failed solar array deployment. Ground teams had just orbital windows to troubleshoot and restore
+                        full power generation.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs text-red-300 bg-red-900/20 px-3 py-1 rounded-full">Power Systems</div>
+                        <button
+                          class="learn-more-btn text-red-400 text-sm hover:text-red-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="solar-array">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Article 3 -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-green-500/20 shadow-xl bg-gradient-to-br from-green-900/20 to-emerald-900/10 backdrop-blur-sm hover:border-green-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-green-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-green-400 text-sm">🛡️</span>
-                          </div>
-                          <div class="text-xs text-green-300 font-medium">Structural Engineering</div>
+                      class="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-green-500/30 to-green-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-green-400 text-lg">🛡️</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Debris Strike Recovery: Patching the ISS Hull in Zero Gravity
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          A 2016 debris impact created a 5mm hole in the ISS hull. Engineers developed innovative
-                          patching
-                          techniques using specialized tools and materials designed for zero-gravity repairs.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Structural Repair</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="debris-strike">Learn More →</button>
-                        </div>
+                        <div class="text-xs text-green-300 font-semibold bg-green-900/30 px-3 py-1 rounded-full">
+                          Structural Engineering</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-green-100 transition-colors duration-300">
+                        Debris Impact Recovery: Zero-G Hull Patching
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        5mm hull breach from debris impact. Innovative patching techniques using specialized
+                        zero-gravity repair materials.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs text-green-300 bg-green-900/20 px-3 py-1 rounded-full">Hull Integrity</div>
+                        <button
+                          class="learn-more-btn text-green-400 text-sm hover:text-green-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="debris-strike">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Article 4 -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-purple-500/20 shadow-xl bg-gradient-to-br from-purple-900/20 to-pink-900/10 backdrop-blur-sm hover:border-purple-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-purple-400 text-sm">🤖</span>
-                          </div>
-                          <div class="text-xs text-purple-300 font-medium">Robotic Systems</div>
+                      class="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-purple-500/30 to-purple-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-purple-400 text-lg">🤖</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Canadarm2 Joint Failure: Innovative Repair Without Replacement
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          When Canadarm2's shoulder joint began failing, engineers couldn't simply replace it. They
-                          developed
-                          a unique "hand-over-hand" technique to continue operations while planning permanent solutions.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Robotics</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="canadarm">Learn More →</button>
-                        </div>
+                        <div class="text-xs text-purple-300 font-semibold bg-purple-900/30 px-3 py-1 rounded-full">
+                          Robotic Systems</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-purple-100 transition-colors duration-300">
+                        Canadarm2 Joint Failure: Adaptive Operations
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        Shoulder joint malfunction. Engineers developed "hand-over-hand" technique to maintain
+                        operations without replacement.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs text-purple-300 bg-purple-900/20 px-3 py-1 rounded-full">Robotics</div>
+                        <button
+                          class="learn-more-btn text-purple-400 text-sm hover:text-purple-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="canadarm">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Article 5 -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-cyan-500/20 shadow-xl bg-gradient-to-br from-cyan-900/20 to-blue-900/10 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-orange-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-orange-400 text-sm">💨</span>
-                          </div>
-                          <div class="text-xs text-orange-300 font-medium">Life Support</div>
+                      class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-cyan-500/30 to-cyan-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-cyan-400 text-lg">💧</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Water Recovery System Breakdown: Engineering Redundancy Saves Lives
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          When the primary water recovery system failed during a 6-month mission, engineers activated
-                          backup
-                          systems and developed new purification protocols to maintain crew safety until repairs could
-                          be
-                          completed.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Life Support</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="water-recovery">Learn More →</button>
-                        </div>
+                        <div class="text-xs text-cyan-300 font-semibold bg-cyan-900/30 px-3 py-1 rounded-full">Life
+                          Support</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-cyan-100 transition-colors duration-300">
+                        Water Recovery System Crisis: Redundancy Saves Lives
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        Primary water recovery failed during 6-month mission. Backup systems and new purification
+                        protocols maintained crew safety.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs text-cyan-300 bg-cyan-900/20 px-3 py-1 rounded-full">Life Support</div>
+                        <button
+                          class="learn-more-btn text-cyan-400 text-sm hover:text-cyan-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="water-recovery">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
+                  </div>
 
-                    <!-- Article 6 -->
+                  <div
+                    class="article-card group relative rounded-2xl overflow-hidden border border-yellow-500/20 shadow-xl bg-gradient-to-br from-yellow-900/20 to-orange-900/10 backdrop-blur-sm hover:border-yellow-400/40 transition-all duration-500 hover:scale-[1.02]">
                     <div
-                      class="article-card rounded-xl overflow-hidden border border-white/10 shadow-md bg-gradient-to-b from-white/10 to-white/5 hover:from-white/15 hover:to-white/10 transition-all duration-300 hover:scale-105">
-                      <div class="p-5">
-                        <div class="flex items-center mb-3">
-                          <div class="w-8 h-8 bg-yellow-500/20 rounded-full flex items-center justify-center mr-3">
-                            <span class="text-yellow-400 text-sm">🔄</span>
-                          </div>
-                          <div class="text-xs text-yellow-300 font-medium">Attitude Control</div>
+                      class="absolute inset-0 bg-gradient-to-br from-yellow-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    </div>
+                    <div class="relative z-10 p-6">
+                      <div class="flex items-center mb-4">
+                        <div
+                          class="w-12 h-12 bg-gradient-to-br from-yellow-500/30 to-yellow-600/20 rounded-xl flex items-center justify-center mr-3">
+                          <span class="text-yellow-400 text-lg">🔄</span>
                         </div>
-                        <h5 class="font-semibold text-white text-sm mb-3 leading-tight">
-                          Gyroscope Failure Crisis: Maintaining Station Attitude with Minimal Systems
-                        </h5>
-                        <p class="text-xs text-gray-300 leading-relaxed mb-4">
-                          Multiple gyroscope failures left the ISS struggling to maintain proper orientation. Engineers
-                          developed creative solutions using thruster combinations and momentum management to keep the
-                          station
-                          stable.
-                        </p>
-                        <div class="flex items-center justify-between">
-                          <div class="text-xs text-gray-400">Attitude Control</div>
-                          <button class="learn-more-btn text-blue-400 text-xs hover:text-blue-300 transition-colors"
-                            data-article="gyroscope">Learn More →</button>
+                        <div class="text-xs text-yellow-300 font-semibold bg-yellow-900/30 px-3 py-1 rounded-full">
+                          Attitude Control</div>
+                      </div>
+                      <h5
+                        class="font-bold text-white text-lg mb-4 leading-tight group-hover:text-yellow-100 transition-colors duration-300">
+                        Gyroscope Failure: Minimal System Stabilization
+                      </h5>
+                      <p
+                        class="text-sm text-gray-300 leading-relaxed mb-6 group-hover:text-gray-200 transition-colors duration-300 text-justify">
+                        Multiple gyroscope failures left ISS struggling with orientation. Creative thruster combinations
+                        maintained stability.
+                      </p>
+                      <div class="flex items-center justify-between">
+                        <div class="text-xs text-yellow-300 bg-yellow-900/20 px-3 py-1 rounded-full">Attitude Control
                         </div>
+                        <button
+                          class="learn-more-btn text-yellow-400 text-sm hover:text-yellow-300 font-semibold transition-all duration-300 hover:translate-x-1"
+                          data-article="gyroscope">
+                          Analyze Solution →
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -2684,19 +2869,173 @@
       </section>
 
       <style>
-        /* Animations */
+        /* Section boundaries and z-index management */
+        #challenges {
+          position: relative;
+          z-index: 1;
+          isolation: isolate;
+          clear: both;
+        }
+
+        #challenges::before {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: transparent;
+          z-index: -1;
+        }
+
+        #challenges::after {
+          content: '';
+          position: absolute;
+          bottom: -1px;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: transparent;
+          z-index: -1;
+        }
+
+        /* Ensure proper stacking context */
+        .container {
+          position: relative;
+          z-index: 2;
+        }
+
+        .floating-particles,
+        .orbital-lines,
+        .stars-field {
+          z-index: 0;
+        }
+
+        /* Global text justification for content paragraphs */
+        p,
+        .text-content {
+          text-align: justify;
+        }
+
+        /* Keep specific elements left-aligned where appropriate */
+        .text-center p,
+        .text-left p,
+        .text-right p {
+          text-align: inherit;
+        }
+
+        /* Enhanced Background Effects */
+        .stars-field {
+          background:
+            radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+            radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+            radial-gradient(1px 1px at 90px 40px, rgba(255, 255, 255, 0.6), transparent),
+            radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.4), transparent),
+            radial-gradient(2px 2px at 160px 30px, rgba(255, 255, 255, 0.6), transparent);
+          background-repeat: repeat;
+          background-size: 200px 100px;
+          animation: twinkle 8s infinite;
+        }
+
+        .orbital-lines {
+          background:
+            linear-gradient(45deg, transparent 48%, rgba(59, 130, 246, 0.1) 49%, rgba(59, 130, 246, 0.1) 51%, transparent 52%),
+            linear-gradient(-45deg, transparent 48%, rgba(168, 85, 247, 0.1) 49%, rgba(168, 85, 247, 0.1) 51%, transparent 52%);
+          background-size: 100px 100px;
+          animation: orbit 20s linear infinite;
+        }
+
+        .floating-particles::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background:
+            radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 80% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%),
+            radial-gradient(circle at 40% 40%, rgba(34, 197, 94, 0.1) 0%, transparent 20%);
+          animation: float 15s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+
+          0%,
+          100% {
+            opacity: 1;
+          }
+
+          50% {
+            opacity: 0.3;
+          }
+        }
+
+        @keyframes orbit {
+          0% {
+            transform: translateX(0px) translateY(0px);
+          }
+
+          25% {
+            transform: translateX(10px) translateY(-10px);
+          }
+
+          50% {
+            transform: translateX(-5px) translateY(-20px);
+          }
+
+          75% {
+            transform: translateX(-15px) translateY(-10px);
+          }
+
+          100% {
+            transform: translateX(0px) translateY(0px);
+          }
+        }
+
+        @keyframes float {
+
+          0%,
+          100% {
+            transform: translateY(0px) scale(1);
+          }
+
+          33% {
+            transform: translateY(-20px) scale(1.1);
+          }
+
+          66% {
+            transform: translateY(10px) scale(0.9);
+          }
+        }
+
+        /* Enhanced Animations */
+        .fade-in-down {
+          animation: fadeInDown 1s ease-out;
+        }
+
         .fade-in-left {
-          animation: fadeInLeft 1s ease-out;
+          animation: fadeInLeft 1.2s ease-out;
         }
 
         .fade-in-right {
-          animation: fadeInRight 1s ease-out 0.3s both;
+          animation: fadeInRight 1.2s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInDown {
+          from {
+            opacity: 0;
+            transform: translateY(-30px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
         }
 
         @keyframes fadeInLeft {
           from {
             opacity: 0;
-            transform: translateX(-50px);
+            transform: translateX(-60px);
           }
 
           to {
@@ -2708,7 +3047,7 @@
         @keyframes fadeInRight {
           from {
             opacity: 0;
-            transform: translateX(50px);
+            transform: translateX(60px);
           }
 
           to {
@@ -2717,101 +3056,358 @@
           }
         }
 
-        .challenge-card {
-          animation: fadeInUp 0.8s ease-out both;
-          animation-delay: calc(var(--delay, 0) * 0.1s);
+        .animate-pulse-glow {
+          animation: pulseGlow 2s infinite;
         }
 
-        .challenge-card:nth-child(1) {
-          --delay: 1;
-        }
-
-        .challenge-card:nth-child(2) {
-          --delay: 2;
-        }
-
-        .challenge-card:nth-child(3) {
-          --delay: 3;
-        }
-
-        .challenge-card:nth-child(4) {
-          --delay: 4;
-        }
-
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .pulse-dot {
-          animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
+        @keyframes pulseGlow {
 
           0%,
           100% {
             opacity: 1;
-            transform: scale(1);
+            box-shadow: 0 0 10px currentColor;
           }
 
           50% {
-            opacity: 0.5;
-            transform: scale(1.2);
+            opacity: 0.7;
+            box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
           }
         }
 
-        /* Article Cards */
-        .article-card {
+        /* Real-time stat animations */
+        .real-time-stat {
           transition: all 0.3s ease;
-          backdrop-filter: blur(10px);
+        }
+
+        .real-time-stat:hover {
+          transform: scale(1.05);
+        }
+
+        .stat-card {
+          transition: all 0.4s ease;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .stat-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+          transition: left 0.8s ease;
+        }
+
+        .stat-card:hover::before {
+          left: 100%;
+        }
+
+        /* Challenge card enhancements */
+        .challenge-card {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .challenge-card::before {
+          content: '';
+          position: absolute;
+          top: -2px;
+          left: -2px;
+          right: -2px;
+          bottom: -2px;
+          background: linear-gradient(45deg,
+              rgba(59, 130, 246, 0.5),
+              rgba(168, 85, 247, 0.5),
+              rgba(34, 197, 94, 0.5),
+              rgba(59, 130, 246, 0.5));
+          border-radius: inherit;
+          z-index: -1;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          background-size: 200% 200%;
+          animation: gradientShift 4s ease infinite;
+        }
+
+        .challenge-card:hover::before {
+          opacity: 0.7;
+        }
+
+        @keyframes gradientShift {
+          0% {
+            background-position: 0% 50%;
+          }
+
+          50% {
+            background-position: 100% 50%;
+          }
+
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        /* Article card hover effects */
+        .article-card {
+          transform-style: preserve-3d;
+          transition: all 0.4s ease;
         }
 
         .article-card:hover {
-          transform: translateY(-5px) scale(1.02);
-          box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-          border-color: rgba(59, 130, 246, 0.3);
+          transform: translateY(-8px) rotateX(2deg) rotateY(2deg);
+          box-shadow:
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 20px rgba(59, 130, 246, 0.2);
         }
 
-        .article-card button:hover {
-          transform: translateX(3px);
-        }
-
-        /* Counter animation */
+        /* Counter animations */
         .counter {
+          background: linear-gradient(45deg, currentColor, rgba(255, 255, 255, 0.8));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
           transition: all 0.3s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
+        /* Pulse dot enhancement */
+        .pulse-dot {
+          animation: pulseRing 2s infinite;
+          box-shadow: 0 0 0 0 currentColor;
+        }
 
-          .challenge-card,
-          .article-card {
-            margin-bottom: 1rem;
+        @keyframes pulseRing {
+          0% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 currentColor;
+          }
+
+          70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+          }
+
+          100% {
+            transform: scale(0.95);
+            box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+          }
+        }
+
+        /* Crew member card animations */
+        .crew-member {
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .crew-member:hover {
+          transform: translateY(-2px);
+          background: rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Mobile-specific fixes and spacing */
+        @media (max-width: 768px) {
+          #challenges {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+            margin-bottom: 2rem;
+            min-height: auto;
+          }
+
+          .challenge-card:hover {
+            transform: scale(1.02);
+          }
+
+          .article-card:hover {
+            transform: translateY(-4px);
           }
 
           .article-card {
             margin-bottom: 1.5rem;
           }
+
+          .challenge-card {
+            margin-bottom: 1.5rem;
+          }
+
+          .fade-in-left,
+          .fade-in-right {
+            animation-delay: 0s;
+          }
+
+          .xl\\:w-2\/5,
+          .xl\\:w-3\/5 {
+            width: 100%;
+            margin-bottom: 2rem;
+          }
+
+          .real-time-stat {
+            padding: 0.75rem;
+          }
+
+          .crew-member {
+            margin-bottom: 1rem;
+          }
+
+          .stat-card {
+            margin-bottom: 1.5rem;
+          }
         }
 
-        @media (max-width: 1024px) {
+        /* Tablet adjustments */
+        @media (max-width: 1024px) and (min-width: 769px) {
+          #challenges {
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+          }
+
           .grid.lg\\:grid-cols-3 {
             grid-template-columns: repeat(2, 1fr);
           }
+        }
+
+        /* Large mobile landscape */
+        @media (max-width: 640px) {
+          #challenges {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+          }
+
+          .container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+          }
+
+          .text-5xl {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+          }
+
+          .text-4xl {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+          }
+
+          .grid-cols-2 {
+            grid-template-columns: repeat(1, 1fr);
+          }
+
+          .md\\:grid-cols-4 {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+
+          .challenge-card,
+          .article-card {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+          }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+          #challenges {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.5rem !important;
+          }
+
+          .real-time-stat div:first-child {
+            font-size: 1.5rem;
+          }
+
+          .challenge-card h4 {
+            font-size: 1rem;
+          }
+
+          .article-card h5 {
+            font-size: 0.875rem;
+          }
+
+          #active-article {
+            margin-top: 1rem;
+            position: relative;
+            z-index: 20;
+          }
+        }
+
+        /* Responsive enhancements */
+        @media (max-width: 768px) {
+          .challenge-card:hover {
+            transform: scale(1.02);
+          }
+
+          .article-card:hover {
+            transform: translateY(-4px);
+          }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: rgba(0, 0, 0, 0.3);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: rgba(59, 130, 246, 0.6);
+          border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: rgba(59, 130, 246, 0.8);
         }
       </style>
 
       <script>
         document.addEventListener('DOMContentLoaded', function () {
-          // Counter Animation
+          // Enhanced Real-time ISS Data Simulation
+          function updateISSData() {
+            const now = new Date();
+
+            // Simulate orbital mechanics (simplified)
+            const orbitProgress = (now.getTime() / 1000 / 5520) % 1; // ~92 minute orbit
+            const altitude = 408 + Math.sin(orbitProgress * Math.PI * 2) * 10; // Altitude variation
+            const speed = 27600 + Math.sin(orbitProgress * Math.PI * 4) * 200; // Speed variation
+
+            // Calculate mission days since November 20, 1998
+            const missionStart = new Date('1998-11-20');
+            const missionDays = Math.floor((now - missionStart) / (1000 * 60 * 60 * 24));
+
+            // Calculate total distance (simplified)
+            const totalDistance = (missionDays * 24 * 27600 / 1000000).toFixed(1); // Million km
+
+            // Update real-time displays
+            document.getElementById('iss-altitude').textContent = Math.round(altitude);
+            document.getElementById('iss-speed').textContent = Math.round(speed).toLocaleString();
+            document.getElementById('mission-days').textContent = missionDays.toLocaleString();
+            document.getElementById('total-distance').textContent = totalDistance + 'B';
+            document.getElementById('velocity-display').textContent = (speed / 3600).toFixed(2) + ' km/s';
+
+            // Update orbit time
+            const orbitMinutes = Math.floor(92 + Math.sin(orbitProgress * Math.PI) * 2);
+            const orbitSeconds = Math.floor(Math.random() * 60);
+            document.getElementById('orbit-time').textContent = `${orbitMinutes}:${orbitSeconds.toString().padStart(2, '0')}`;
+
+            // Update location (simplified)
+            const locations = [
+              'Over Pacific Ocean', 'Over North America', 'Over Atlantic Ocean',
+              'Over Europe', 'Over Asia', 'Over Indian Ocean', 'Over Australia',
+              'Over Antarctica', 'Over South America', 'Over Africa'
+            ];
+            const locationIndex = Math.floor(orbitProgress * locations.length);
+            document.getElementById('iss-location').textContent = locations[locationIndex];
+
+            // Update timestamp
+            document.getElementById('last-update').textContent = `Last update: ${now.toLocaleTimeString()}`;
+          }
+
+          // Update ISS data every 5 seconds
+          updateISSData();
+          setInterval(updateISSData, 5000);
+
+          // Enhanced Counter Animation with Stagger
           const counters = document.querySelectorAll('.counter');
           let hasAnimated = false;
 
@@ -2819,257 +3415,308 @@
             if (hasAnimated) return;
             hasAnimated = true;
 
-            counters.forEach(counter => {
-              const target = parseInt(counter.getAttribute('data-target'));
-              let current = 0;
-              const increment = target / 50;
+            counters.forEach((counter, index) => {
+              setTimeout(() => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 60;
 
-              const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                  counter.textContent = target;
-                  clearInterval(timer);
-                } else {
-                  counter.textContent = Math.ceil(current);
-                }
-              }, 40);
+                const timer = setInterval(() => {
+                  current += increment;
+                  if (current >= target) {
+                    counter.textContent = target.toLocaleString();
+                    clearInterval(timer);
+                  } else {
+                    counter.textContent = Math.ceil(current).toLocaleString();
+                  }
+                }, 30);
+              }, index * 200);
             });
           }
 
-          // Intersection Observer for Counter Animation
+          // Enhanced Intersection Observer
           const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
           };
 
           const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-              if (entry.isIntersecting && entry.target.classList.contains('counter')) {
-                animateCounters();
+              if (entry.isIntersecting) {
+                if (entry.target.classList.contains('counter')) {
+                  animateCounters();
+                }
+                // Add slide-in animations for other elements
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
               }
             });
           }, observerOptions);
 
-          counters.forEach(counter => observer.observe(counter));
-
-          // Challenge Card Hover Effects
-          document.querySelectorAll('.challenge-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-              card.style.transform = 'translateY(-8px) scale(1.03)';
-              card.style.boxShadow = '0 25px 50px rgba(59, 130, 246, 0.15)';
-            });
-
-            card.addEventListener('mouseleave', () => {
-              card.style.transform = 'translateY(0) scale(1)';
-              card.style.boxShadow = '';
-            });
+          // Observe elements for animations
+          document.querySelectorAll('.counter, .stat-card, .crew-member').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
           });
 
-          // Article Card Click Handlers
-          document.querySelectorAll('.learn-more-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-              e.preventDefault();
-              const articleId = button.getAttribute('data-article');
-              const card = button.closest('.article-card');
-              const title = card.querySelector('h5').textContent.trim();
-
-              // Add a subtle animation on click
-              button.style.transform = 'translateX(5px)';
-              setTimeout(() => {
-                button.style.transform = 'translateX(0)';
-              }, 150);
-
-              // Show article content in left sidebar
-              showArticleContent(articleId, title);
-            });
-          });
-
-          // Article Content Data
+          // Enhanced Article System
           const articleContent = {
             'ammonia-leak': {
-              title: 'Ammonia Coolant Loop Leak Crisis',
+              title: 'Ammonia Coolant Loop Crisis: Emergency Recovery',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-red-400 rounded-full mr-2"></span>
-                <span class="text-red-300 text-sm font-semibold">Critical System Failure - May 2013</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Problem:</h5>
-                <p class="text-xs text-gray-300">A critical ammonia leak was detected in Loop A of the External Thermal Control System, threatening the station's ability to regulate temperature for essential systems.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">The Solution:</h5>
-                <p class="text-xs text-gray-300 mb-2">Engineers executed a complex 3-phase repair:</p>
-                <ul class="text-xs text-gray-400 space-y-1">
-                  <li>• Isolated the leak using bypass valves</li>
-                  <li>• Conducted emergency EVA to replace pump module</li>
-                  <li>• Implemented temporary cooling using backup systems</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">Engineering Innovation:</h5>
-                <p class="text-xs text-gray-300">The repair required developing new EVA procedures for handling toxic ammonia in zero gravity, creating specialized containment protocols.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-red-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-red-300 text-sm font-semibold">CRITICAL SYSTEM FAILURE • May 2013</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3 flex items-center">
+                      <span class="text-red-400 mr-2">⚠️</span> THE CRISIS
+                    </h5>
+                    <p class="text-xs text-gray-300 leading-relaxed text-justify">External Thermal Control System Loop A experienced critical ammonia leak, threatening station's ability to regulate temperature for essential electronics and life support systems. Temperature spike imminent.</p>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3 flex items-center">
+                      <span class="text-green-400 mr-2">🔧</span> ENGINEERING RESPONSE
+                    </h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-gray-300">3-Phase Emergency Protocol Executed:</p>
+                      <div class="grid grid-cols-1 gap-2 ml-2">
+                        <div class="text-xs text-green-200">• Immediate isolation using bypass valves</div>
+                        <div class="text-xs text-green-200">• Emergency EVA deployment (< 6 hours)</div>
+                        <div class="text-xs text-green-200">• Pump module replacement in zero-G</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3 flex items-center">
+                      <span class="text-blue-400 mr-2">🚀</span> INNOVATION BREAKTHROUGH
+                    </h5>
+                    <p class="text-xs text-gray-300 leading-relaxed">Developed new EVA protocols for handling toxic ammonia in microgravity. Created specialized containment procedures that became standard for future missions.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-purple-900/30 to-black/20 p-4 rounded-xl border-l-4 border-purple-400">
+                    <h5 class="text-purple-300 font-bold text-sm mb-3">⏱️ MISSION IMPACT</h5>
+                    <p class="text-xs text-purple-200">Full thermal control restored in <span class="font-bold">48 hours</span>. Zero mission downtime. Crew safety maintained throughout entire operation.</p>
+                  </div>
+                </div>
+              `
             },
             'solar-array': {
-              title: 'Solar Array Power Crisis',
+              title: 'Solar Array Crisis: 90-Minute Solutions',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></span>
-                <span class="text-yellow-300 text-sm font-semibold">Power System Emergency - 2007</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Challenge:</h5>
-                <p class="text-xs text-gray-300">During solar array retraction, several panels became stuck, threatening to tear and potentially damage the entire power generation system.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">Real-time Problem Solving:</h5>
-                <ul class="text-xs text-gray-300 space-y-1">
-                  <li>• Ground teams had only 90-minute orbital windows</li>
-                  <li>• Developed "shake and bake" thermal cycling technique</li>
-                  <li>• Used station's robotic arm for precise manipulation</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">Result:</h5>
-                <p class="text-xs text-gray-300">Successfully retracted 58 of 58 panels through innovative heating and mechanical manipulation, maintaining full power capacity.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-yellow-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-yellow-300 text-sm font-semibold">POWER EMERGENCY • September 2007</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3">⚡ POWER CRISIS</h5>
+                    <p class="text-xs text-gray-300">Solar array P6 panels jammed during retraction sequence. Risk of catastrophic tearing threatened entire power generation system. Multiple panels stuck in dangerous positions.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3">🕒 TIME CONSTRAINTS</h5>
+                    <p class="text-xs text-gray-300 mb-2">Ground teams had only 90-minute orbital windows to:</p>
+                    <div class="space-y-1 ml-2">
+                      <div class="text-xs text-blue-200">• Analyze telemetry data</div>
+                      <div class="text-xs text-blue-200">• Develop solutions</div>
+                      <div class="text-xs text-blue-200">• Execute commands</div>
+                      <div class="text-xs text-blue-200">• Monitor results before next orbit</div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3">🎯 BREAKTHROUGH SOLUTION</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-green-200 font-semibold">"Shake and Bake" Technique:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-gray-300">• Thermal cycling to expand/contract panels</div>
+                        <div class="text-xs text-gray-300">• Robotic arm precise manipulation</div>
+                        <div class="text-xs text-gray-300">• Coordinated vibration sequences</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-purple-900/30 to-black/20 p-4 rounded-xl border-l-4 border-purple-400">
+                    <h5 class="text-purple-300 font-bold text-sm mb-3">🏆 PERFECT EXECUTION</h5>
+                    <p class="text-xs text-purple-200">Successfully retracted all <span class="font-bold text-purple-100">58 of 58 panels</span> without damage. Maintained 100% power generation capacity.</p>
+                  </div>
+                </div>
+              `
             },
             'debris-strike': {
-              title: 'Debris Strike Recovery',
+              title: 'Debris Impact: Zero-G Emergency Repair',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-orange-400 rounded-full mr-2"></span>
-                <span class="text-orange-300 text-sm font-semibold">Hull Breach - September 2016</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Impact:</h5>
-                <p class="text-xs text-gray-300">A 5mm hole was discovered in the Soyuz spacecraft docked to the ISS, caused by a micrometeoroid or small debris impact at orbital velocity.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">Emergency Response:</h5>
-                <ul class="text-xs text-gray-300 space-y-1">
-                  <li>• Astronauts used specialized detection equipment</li>
-                  <li>• Applied Kapton tape as emergency patch</li>
-                  <li>• Developed epoxy-based permanent seal</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">Long-term Solution:</h5>
-                <p class="text-xs text-gray-300">Engineers created new inspection protocols and improved Whipple shield design for future missions, preventing similar incidents.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-orange-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-orange-300 text-sm font-semibold">HULL BREACH • September 2018</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3">🎯 HIGH-VELOCITY IMPACT</h5>
+                    <p class="text-xs text-gray-300">Micrometeoroid created 2mm hole in Soyuz MS-09 orbital module. Impact velocity estimated at 28,000+ km/h. Slow pressure leak detected during routine checks.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-yellow-900/30 to-black/20 p-4 rounded-xl border-l-4 border-yellow-400">
+                    <h5 class="text-yellow-300 font-bold text-sm mb-3">🔍 DETECTION PROTOCOL</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-gray-300">Advanced leak detection system activated:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-yellow-200">• Ultrasonic leak detector scanning</div>
+                        <div class="text-xs text-yellow-200">• Pressure differential analysis</div>
+                        <div class="text-xs text-yellow-200">• Visual inspection using fiber optic camera</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3">🛠️ EMERGENCY PATCH</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-green-200">Multi-layer repair technique:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-gray-300">• Kapton tape immediate seal</div>
+                        <div class="text-xs text-gray-300">• Epoxy resin permanent patch</div>
+                        <div class="text-xs text-gray-300">• Gauze reinforcement layer</div>
+                        <div class="text-xs text-gray-300">• Sealant compound finishing</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3">🔬 ENHANCED PROTECTION</h5>
+                    <p class="text-xs text-blue-200">Incident led to improved Whipple shield design and enhanced debris tracking protocols for future missions.</p>
+                  </div>
+                </div>
+              `
             },
             'canadarm': {
-              title: 'Canadarm2 Joint Failure',
+              title: 'Canadarm2: Adaptive Robotic Solutions',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-purple-400 rounded-full mr-2"></span>
-                <span class="text-purple-300 text-sm font-semibold">Robotic System Crisis - 2017</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Malfunction:</h5>
-                <p class="text-xs text-gray-300">Canadarm2's shoulder joint developed excessive friction and stalling, threatening critical cargo operations and EVA support capabilities.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">Innovative Workaround:</h5>
-                <ul class="text-xs text-gray-300 space-y-1">
-                  <li>• Developed "hand-over-hand" walking technique</li>
-                  <li>• Used backup joint configurations</li>
-                  <li>• Implemented load-sharing between healthy joints</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">Engineering Success:</h5>
-                <p class="text-xs text-gray-300">Maintained 95% operational capability while planning replacement parts delivery, demonstrating remarkable system redundancy design.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-purple-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-purple-300 text-sm font-semibold">ROBOTIC CRISIS • March 2017</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3">🤖 SYSTEM MALFUNCTION</h5>
+                    <p class="text-xs text-gray-300">Canadarm2 shoulder pitch joint developed excessive friction and intermittent stalling. Critical for cargo operations, EVA support, and station maintenance.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-yellow-900/30 to-black/20 p-4 rounded-xl border-l-4 border-yellow-400">
+                    <h5 class="text-yellow-300 font-bold text-sm mb-3">⚡ INNOVATIVE WORKAROUND</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-yellow-200 font-semibold">"Hand-over-Hand" Technique:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-gray-300">• Use backup grapple fixtures</div>
+                        <div class="text-xs text-gray-300">• Alternative joint configurations</div>
+                        <div class="text-xs text-gray-300">• Load distribution across healthy joints</div>
+                        <div class="text-xs text-gray-300">• Walking technique using base-to-tip movement</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3">📊 OPERATIONAL SUCCESS</h5>
+                    <p class="text-xs text-green-200">Maintained <span class="font-bold text-green-100">95% operational capability</span> while planning replacement parts delivery. Demonstrated exceptional system redundancy design.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3">🔧 LONG-TERM SOLUTION</h5>
+                    <p class="text-xs text-blue-200">New joint mechanisms delivered and installed during subsequent EVA missions. Enhanced diagnostic systems implemented for predictive maintenance.</p>
+                  </div>
+                </div>
+              `
             },
             'water-recovery': {
-              title: 'Water Recovery System Breakdown',
+              title: 'Water Recovery Crisis: System Redundancy',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-cyan-400 rounded-full mr-2"></span>
-                <span class="text-cyan-300 text-sm font-semibold">Life Support Emergency - 2019</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Crisis:</h5>
-                <p class="text-xs text-gray-300">Primary Water Recovery System failed during a critical 6-month mission, threatening crew water supply with no immediate resupply option.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">Multi-layered Response:</h5>
-                <ul class="text-xs text-gray-300 space-y-1">
-                  <li>• Activated backup Russian water system</li>
-                  <li>• Implemented water conservation protocols</li>
-                  <li>• Developed alternative purification methods</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">System Redundancy:</h5>
-                <p class="text-xs text-gray-300">The incident validated the ISS's multi-national design philosophy, where backup systems from different countries ensure crew safety.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-cyan-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-cyan-300 text-sm font-semibold">LIFE SUPPORT EMERGENCY • August 2019</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3">💧 CRITICAL FAILURE</h5>
+                    <p class="text-xs text-gray-300">Primary Water Recovery System experienced pump failure during 6-month expedition. No immediate resupply mission scheduled. Crew water reserves critically low.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3">🚨 EMERGENCY PROTOCOLS</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-blue-200">Multi-system activation:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-gray-300">• Russian Elektron water system backup</div>
+                        <div class="text-xs text-gray-300">• Strict water conservation measures</div>
+                        <div class="text-xs text-gray-300">• Alternative purification protocols</div>
+                        <div class="text-xs text-gray-300">• Emergency water rations deployment</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3">🌍 INTERNATIONAL COOPERATION</h5>
+                    <p class="text-xs text-green-200">Multi-national design philosophy proved critical. Russian, American, and European systems worked together seamlessly to maintain crew safety.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-purple-900/30 to-black/20 p-4 rounded-xl border-l-4 border-purple-400">
+                    <h5 class="text-purple-300 font-bold text-sm mb-3">🔬 MISSION SUCCESS</h5>
+                    <p class="text-xs text-purple-200">Zero crew health impact. System repairs completed during next EVA cycle. Enhanced redundancy protocols implemented.</p>
+                  </div>
+                </div>
+              `
             },
             'gyroscope': {
-              title: 'Gyroscope Failure Crisis',
+              title: 'Gyroscope Crisis: Minimal System Control',
               content: `
-            <div class="space-y-4">
-              <div class="flex items-center mb-3">
-                <span class="w-3 h-3 bg-indigo-400 rounded-full mr-2"></span>
-                <span class="text-indigo-300 text-sm font-semibold">Attitude Control Emergency - 2014</span>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">The Problem:</h5>
-                <p class="text-xs text-gray-300">Two of four Control Moment Gyroscopes failed within months, leaving the ISS unable to maintain proper orientation without constant thruster burns.</p>
-              </div>
-              
-              <div class="bg-black/30 p-3 rounded-lg">
-                <h5 class="text-green-300 font-semibold text-sm mb-2">Creative Engineering:</h5>
-                <ul class="text-xs text-gray-300 space-y-1">
-                  <li>• Developed asymmetric momentum management</li>
-                  <li>• Used solar pressure for attitude assistance</li>
-                  <li>• Implemented predictive control algorithms</li>
-                </ul>
-              </div>
-              
-              <div class="bg-blue-900/20 p-3 rounded-lg">
-                <h5 class="text-blue-300 font-semibold text-sm mb-2">Long-term Fix:</h5>
-                <p class="text-xs text-gray-300">Engineers successfully replaced faulty gyroscopes during EVAs, while improved software continued operating with reduced hardware.</p>
-              </div>
-            </div>
-          `
+                <div class="space-y-4">
+                  <div class="flex items-center mb-3">
+                    <span class="w-3 h-3 bg-indigo-400 rounded-full mr-2 animate-pulse"></span>
+                    <span class="text-indigo-300 text-sm font-semibold">ATTITUDE CONTROL EMERGENCY • April 2014</span>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-red-900/30 to-black/20 p-4 rounded-xl border-l-4 border-red-400">
+                    <h5 class="text-red-300 font-bold text-sm mb-3">⚖️ STABILITY CRISIS</h5>
+                    <p class="text-xs text-gray-300">Two of four Control Moment Gyroscopes failed within 8 months. Station unable to maintain proper orientation without constant thruster burns, threatening fuel reserves.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-yellow-900/30 to-black/20 p-4 rounded-xl border-l-4 border-yellow-400">
+                    <h5 class="text-yellow-300 font-bold text-sm mb-3">🎯 CREATIVE SOLUTIONS</h5>
+                    <div class="space-y-2">
+                      <p class="text-xs text-yellow-200">Advanced control techniques:</p>
+                      <div class="ml-2 space-y-1">
+                        <div class="text-xs text-gray-300">• Asymmetric momentum management</div>
+                        <div class="text-xs text-gray-300">• Solar pressure attitude assistance</div>
+                        <div class="text-xs text-gray-300">• Predictive control algorithms</div>
+                        <div class="text-xs text-gray-300">• Optimized thruster firing patterns</div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="bg-gradient-to-r from-green-900/30 to-black/20 p-4 rounded-xl border-l-4 border-green-400">
+                    <h5 class="text-green-300 font-bold text-sm mb-3">🔧 HARDWARE SOLUTION</h5>
+                    <p class="text-xs text-green-200">Replacement gyroscopes successfully installed during complex EVA operations. Enhanced software continued operating with reduced hardware until repairs completed.</p>
+                  </div>
+
+                  <div class="bg-gradient-to-r from-blue-900/30 to-black/20 p-4 rounded-xl border-l-4 border-blue-400">
+                    <h5 class="text-blue-300 font-bold text-sm mb-3">💡 ENGINEERING LEGACY</h5>
+                    <p class="text-xs text-blue-200">Advanced control algorithms developed during crisis now standard operating procedures. Improved system resilience for future long-duration missions.</p>
+                  </div>
+                </div>
+              `
             }
           };
 
-          // Show article content function
+          // Enhanced article display system
           function showArticleContent(articleId, title) {
             const activeArticle = document.getElementById('active-article');
             const activeTitle = document.getElementById('active-title');
@@ -3079,56 +3726,135 @@
               activeTitle.textContent = articleContent[articleId].title;
               activeContent.innerHTML = articleContent[articleId].content;
 
-              // Smooth reveal animation
               activeArticle.classList.remove('hidden');
               activeArticle.style.opacity = '0';
-              activeArticle.style.transform = 'translateY(-20px)';
+              activeArticle.style.transform = 'translateY(-30px) scale(0.95)';
 
               setTimeout(() => {
-                activeArticle.style.transition = 'all 0.4s ease-out';
+                activeArticle.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
                 activeArticle.style.opacity = '1';
-                activeArticle.style.transform = 'translateY(0)';
+                activeArticle.style.transform = 'translateY(0) scale(1)';
               }, 50);
 
-              // Scroll to active article on mobile
-              if (window.innerWidth < 768) {
+              // Mobile scroll behavior with better positioning
+              if (window.innerWidth < 1024) {
                 setTimeout(() => {
-                  activeArticle.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 200);
+                  // Scroll with offset to prevent overlap with fixed headers
+                  const offset = window.innerWidth < 768 ? 80 : 60;
+                  const elementPosition = activeArticle.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }, 300);
               }
             }
           }
 
-          // Close article function
+          // Article interaction handlers
+          document.querySelectorAll('.learn-more-btn').forEach(button => {
+            button.addEventListener('click', (e) => {
+              e.preventDefault();
+              const articleId = button.getAttribute('data-article');
+              const card = button.closest('.article-card');
+              const title = card.querySelector('h5').textContent.trim();
+
+              // Enhanced button animation
+              button.style.transform = 'translateX(8px) scale(1.05)';
+              button.style.color = '#ffffff';
+              setTimeout(() => {
+                button.style.transform = 'translateX(0) scale(1)';
+                button.style.color = '';
+              }, 200);
+
+              showArticleContent(articleId, title);
+            });
+          });
+
+          // Close article handler
           document.getElementById('close-article').addEventListener('click', () => {
             const activeArticle = document.getElementById('active-article');
-            activeArticle.style.transition = 'all 0.3s ease-in';
+            activeArticle.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.6, 1)';
             activeArticle.style.opacity = '0';
-            activeArticle.style.transform = 'translateY(-20px)';
+            activeArticle.style.transform = 'translateY(-30px) scale(0.95)';
 
             setTimeout(() => {
               activeArticle.classList.add('hidden');
-            }, 300);
+            }, 400);
           });
 
-          // Staggered animation for article cards
-          const articleCards = document.querySelectorAll('.article-card');
-          articleCards.forEach((card, index) => {
-            card.style.animationDelay = `${0.1 * (index + 5)}s`;
-            card.classList.add('fade-in-up');
+          // Enhanced crew member interactions
+          document.querySelectorAll('.crew-member').forEach(member => {
+            member.addEventListener('mouseenter', () => {
+              member.style.transform = 'translateY(-3px) scale(1.02)';
+              member.style.boxShadow = '0 8px 25px rgba(59, 130, 246, 0.15)';
+            });
+
+            member.addEventListener('mouseleave', () => {
+              member.style.transform = 'translateY(0) scale(1)';
+              member.style.boxShadow = '';
+            });
           });
 
-          // Add fade-in-up class to CSS if not already present
-          if (!document.querySelector('style').textContent.includes('fade-in-up')) {
-            const style = document.querySelector('style');
-            style.textContent += `
-          .fade-in-up {
-            animation: fadeInUp 0.8s ease-out both;
-          }
-        `;
+          // Parallax effect for background elements
+          function handleParallax() {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-particles, .orbital-lines');
+
+            parallaxElements.forEach((element, index) => {
+              const speed = (index + 1) * 0.1;
+              element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
           }
 
-          console.log('ISS Challenges section with articles initialized successfully!');
+          // Throttled scroll event for performance
+          let ticking = false;
+          function requestTick() {
+            if (!ticking) {
+              requestAnimationFrame(handleParallax);
+              ticking = true;
+              setTimeout(() => { ticking = false; }, 16);
+            }
+          }
+
+          window.addEventListener('scroll', requestTick);
+
+          // Enhanced real-time data with more dynamic updates
+          function updateAdvancedData() {
+            const now = new Date();
+            const seconds = now.getSeconds();
+
+            // Create more realistic variations
+            const variation1 = Math.sin(seconds * 0.1) * 0.5;
+            const variation2 = Math.cos(seconds * 0.15) * 0.3;
+
+            // Update crew count with mission-realistic number
+            document.getElementById('crew-count').textContent = '7';
+
+            // Add subtle animation to real-time stats
+            document.querySelectorAll('.real-time-stat').forEach((stat, index) => {
+              if (Math.random() < 0.1) { // 10% chance per update
+                stat.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                  stat.style.transform = 'scale(1)';
+                }, 150);
+              }
+            });
+          }
+
+          setInterval(updateAdvancedData, 2000);
+
+          // Initialize with staggered animations
+          setTimeout(() => {
+            document.querySelectorAll('.challenge-card').forEach((card, index) => {
+              card.style.animationDelay = `${index * 0.2}s`;
+              card.classList.add('fade-in-up');
+            });
+          }, 500);
+
+          console.log('Enhanced ISS Challenges section initialized with real-time data and advanced interactions!');
         });
       </script>
 
