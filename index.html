@@ -91,7 +91,7 @@
   <div id="app" class="min-h-screen flex flex-col">
 
     <!-- STICKY NAVBAR -->
-    <header class="sticky top-0 z-50 bg-gradient-to-b from-black/60 to-transparent backdrop-blur-md">
+    <header class="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black/70 to-transparent backdrop-blur-md">
       <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
         <div class="flex items-center gap-4">
           <!-- Animated ISS Text Logo -->
@@ -110,7 +110,8 @@
           <a href="#assembly" data-link class="hover:text-blue-300 transition">Assembly</a>
           <a href="#design" data-link class="hover:text-blue-300 transition">Design & Tech</a>
           <a href="#challenges" data-link class="hover:text-blue-300 transition">Challenges</a>
-          <a href="#gallery" data-link class="hover:text-blue-300 transition">Live</a>
+          <a href="#live" data-link class="hover:text-blue-300 transition">Live</a>
+          <a href="#gallery" data-link class="hover:text-blue-300 transition">Gallery</a>
           <a href="#contact" data-link
             class="px-4 py-2 bg-blue-600 rounded-full text-sm shadow-lg hover:brightness-110 transition">Contact</a>
         </div>
@@ -124,13 +125,14 @@
       </nav>
 
       <!-- Mobile Drawer -->
-      <div id="mobileMenu" class="md:hidden bg-black/70 backdrop-blur-sm hidden">
+      <div id="mobileMenu" class="md:hidden bg-black/80 backdrop-blur-sm hidden">
         <div class="px-6 py-6 flex flex-col gap-3">
           <a href="#home" data-link class="py-2 px-3 rounded hover:bg-white/5">Home</a>
-          <a href="#history" data-link class="py-2 px-3 rounded hover:bg-white/5">Assembly</a>
+          <a href="#assembly" data-link class="py-2 px-3 rounded hover:bg-white/5">Assembly</a>
           <a href="#design" data-link class="py-2 px-3 rounded hover:bg-white/5">Design & Technology</a>
           <a href="#challenges" data-link class="py-2 px-3 rounded hover:bg-white/5">Challenges</a>
-          <a href="#gallery" data-link class="py-2 px-3 rounded hover:bg-white/5">Live</a>
+          <a href="#live" data-link class="py-2 px-3 rounded hover:bg-white/5">Live</a>
+          <a href="#gallery" data-link class="py-2 px-3 rounded hover:bg-white/5">Gallery</a>
           <a href="#contact" data-link class="py-2 px-3 rounded bg-blue-600 text-black font-semibold">Contact / Learn
             More</a>
         </div>
@@ -204,6 +206,7 @@
       });
     </script>
 
+
     <main class="flex-1">
 
       <!-- HOME / HERO -->
@@ -223,7 +226,7 @@
           class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 md:gap-20 py-24">
           <!-- Left Content -->
           <div id="heroLeft"
-            class="w-full md:w-1/2 text-center md:text-left opacity-0 order-1 transition-transform duration-500 transform hover:scale-110 hover:shadow-2xl hover:bg-white/5 hover:-translate-y-2 p-4 rounded-2xl">
+            class="w-full md:w-1/2 text-center md:text-left opacity-0 order-1 transition-transform duration-500 transform hover:scale-100 hover:shadow-2xl hover:bg-white/5 hover:-translate-y-2 p-4 rounded-2xl">
             <h1 id="heroHeading"
               class="text-4xl md:text-5xl font-extrabold text-white leading-tight whitespace-normal hover:scale-105 hover:text-blue-400 transition-all duration-300">
             </h1>
@@ -285,6 +288,10 @@
 
         .carousel-image.opacity-100 {
           opacity: 1;
+        }
+
+        .div {
+          text-align: justify;
         }
       </style>
 
@@ -3861,8 +3868,8 @@
         });
       </script>
 
-      <!-- GALLERY -->
-      <section id="gallery" class="relative py-24 overflow-hidden">
+      <!-- live -->
+      <section id="live" class="relative py-24 overflow-hidden">
         <!-- Animated Background -->
         <div class="absolute inset-0 bg-gradient-to-br from-black via-black to-black">
           <div class="absolute inset-0 bg-gradient-to-t from-black via-blue-black to-black/60"></div>
@@ -3874,12 +3881,15 @@
         <div class="relative container mx-auto px-6">
           <!-- Enhanced Header -->
           <div class="text-center mb-16">
-            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 animate-pulse">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 animate-pulse">
               <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
               </svg>
             </div>
-            <h2 class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent mb-4">
+            <h2
+              class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent mb-4">
               ISS Live Tracker
             </h2>
             <p class="text-xl text-center text-gray-300 max-w-2xl mx-auto leading-relaxed">
@@ -3891,7 +3901,8 @@
           <!-- Live ISS Status Cards -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             <!-- Current Location Card -->
-            <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6">
+            <div
+              class="bg-gradient-to-br from-blue-900/30 to-cyan-900/30 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-white">Current Position</h3>
                 <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
@@ -3913,7 +3924,8 @@
             </div>
 
             <!-- Speed & Orbit Card -->
-            <div class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6">
+            <div
+              class="bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border border-purple-500/30 rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-white">Orbital Data</h3>
                 <div class="w-3 h-3 bg-purple-400 rounded-full animate-spin"></div>
@@ -3935,7 +3947,8 @@
             </div>
 
             <!-- Current Weather Card -->
-            <div class="bg-gradient-to-br from-green-900/30 to-teal-900/30 backdrop-blur-sm border border-green-500/30 rounded-2xl p-6">
+            <div
+              class="bg-gradient-to-br from-green-900/30 to-teal-900/30 backdrop-blur-sm border border-green-500/30 rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-lg font-bold text-white">Below ISS</h3>
                 <div class="w-3 h-3 bg-green-400 rounded-full animate-pulse"></div>
@@ -3959,7 +3972,8 @@
 
           <!-- Live World Map -->
           <div class="mb-8">
-            <div class="bg-gradient-to-br from-gray-900/50 to-blue-900/30 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6">
+            <div
+              class="bg-gradient-to-br from-gray-900/50 to-blue-900/30 backdrop-blur-sm border border-blue-500/30 rounded-2xl p-6">
               <div class="flex items-center justify-between mb-4">
                 <h3 class="text-xl font-bold text-white">Real-Time ISS Location</h3>
                 <div class="flex items-center space-x-2">
@@ -3967,13 +3981,17 @@
                   <span class="text-sm text-gray-400">Live Tracking</span>
                 </div>
               </div>
-              
+
               <!-- Map Container -->
-              <div id="map" class="w-full h-48 sm:h-56 md:h-64 lg:h-72 rounded-2xl border border-gray-700/50 bg-gray-900/80 relative overflow-hidden">
+              <div id="map"
+                class="w-full h-48 sm:h-56 md:h-64 lg:h-72 rounded-2xl border border-gray-700/50 bg-gray-900/80 relative overflow-hidden">
                 <!-- Loading indicator -->
-                <div id="mapLoading" class="absolute inset-0 flex items-center justify-center text-gray-400 z-10 bg-gray-900/95 rounded-2xl">
+                <div id="mapLoading"
+                  class="absolute inset-0 flex items-center justify-center text-gray-400 z-10 bg-gray-900/95 rounded-2xl">
                   <div class="text-center">
-                    <div class="w-10 h-10 border-3 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-3"></div>
+                    <div
+                      class="w-10 h-10 border-3 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mx-auto mb-3">
+                    </div>
                     <p class="text-base font-semibold">Loading World Map...</p>
                     <p class="text-xs mt-1">Preparing ISS tracker</p>
                   </div>
@@ -4002,37 +4020,40 @@
           <!-- ISS Facts Grid -->
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <!-- ISS Overview -->
-            <div class="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-500">
+            <div
+              class="bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-6 hover:border-blue-400/50 transition-all duration-500">
               <div class="flex items-center justify-between mb-4">
                 <h4 class="text-lg font-bold text-white">About ISS</h4>
                 <div class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
               </div>
               <p class="text-gray-400 text-sm leading-relaxed">
-                The International Space Station orbits Earth every 93 minutes at an altitude of approximately 408 km, 
+                The International Space Station orbits Earth every 93 minutes at an altitude of approximately 408 km,
                 serving as humanity's permanent outpost in space.
               </p>
             </div>
 
             <!-- Crew Information -->
-            <div class="bg-gradient-to-br from-green-900/20 to-teal-900/20 backdrop-blur-sm border border-green-500/20 rounded-2xl p-6 hover:border-green-400/50 transition-all duration-500">
+            <div
+              class="bg-gradient-to-br from-green-900/20 to-teal-900/20 backdrop-blur-sm border border-green-500/20 rounded-2xl p-6 hover:border-green-400/50 transition-all duration-500">
               <div class="flex items-center justify-between mb-4">
                 <h4 class="text-lg font-bold text-white">Current Crew</h4>
                 <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               </div>
               <p class="text-gray-400 text-sm leading-relaxed">
-                Typically houses 6-7 international astronauts conducting scientific experiments and maintaining 
+                Typically houses 6-7 international astronauts conducting scientific experiments and maintaining
                 the station's critical systems 24/7.
               </p>
             </div>
 
             <!-- Fun Facts -->
-            <div class="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-sm border border-orange-500/20 rounded-2xl p-6 hover:border-orange-400/50 transition-all duration-500">
+            <div
+              class="bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-sm border border-orange-500/20 rounded-2xl p-6 hover:border-orange-400/50 transition-all duration-500">
               <div class="flex items-center justify-between mb-4">
                 <h4 class="text-lg font-bold text-white">Amazing Facts</h4>
                 <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
               </div>
               <p class="text-gray-400 text-sm leading-relaxed">
-                Travels 28,000 km/h, experiences 16 sunrises/sunsets daily, and has been continuously 
+                Travels 28,000 km/h, experiences 16 sunrises/sunsets daily, and has been continuously
                 inhabited since November 2000.
               </p>
             </div>
@@ -4041,13 +4062,27 @@
 
         <style>
           @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+
+            50% {
+              transform: translateY(-10px);
+            }
           }
 
           @keyframes twinkle {
-            0%, 100% { opacity: 0; }
-            50% { opacity: 1; }
+
+            0%,
+            100% {
+              opacity: 0;
+            }
+
+            50% {
+              opacity: 1;
+            }
           }
 
           .stars {
@@ -4095,7 +4130,8 @@
           /* Leaflet map fixes - Remove blue background */
           .leaflet-container {
             font-family: inherit;
-            background: #1f2937 !important; /* Dark gray instead of blue */
+            background: #1f2937 !important;
+            /* Dark gray instead of blue */
           }
 
           .leaflet-tile-pane {
@@ -4126,20 +4162,21 @@
           /* Mobile responsive adjustments */
           @media (max-width: 768px) {
             #map {
-              height: 12rem !important; /* Smaller on mobile */
+              height: 12rem !important;
+              /* Smaller on mobile */
               min-height: 200px;
             }
-            
+
             .iss-marker {
               width: 22px;
               height: 22px;
             }
-            
+
             .leaflet-popup-content-wrapper {
               border-radius: 6px;
               background: rgba(17, 24, 39, 0.95);
             }
-            
+
             .leaflet-popup-content {
               margin: 6px 10px;
               font-size: 13px;
@@ -4148,7 +4185,8 @@
 
           @media (max-width: 640px) {
             #map {
-              height: 10rem !important; /* Even smaller on very small screens */
+              height: 10rem !important;
+              /* Even smaller on very small screens */
               min-height: 180px;
             }
           }
@@ -4159,19 +4197,30 @@
           }
 
           .leaflet-control-zoom a {
-            background: rgba(0,0,0,0.7) !important;
+            background: rgba(0, 0, 0, 0.7) !important;
             color: white !important;
-            border: 1px solid rgba(255,255,255,0.2) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
           }
 
           .leaflet-control-zoom a:hover {
-            background: rgba(0,0,0,0.9) !important;
+            background: rgba(0, 0, 0, 0.9) !important;
           }
 
           @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
-            50% { transform: scale(1.1); box-shadow: 0 0 30px rgba(239, 68, 68, 0.8); }
-            100% { transform: scale(1); box-shadow: 0 0 20px rgba(239, 68, 68, 0.6); }
+            0% {
+              transform: scale(1);
+              box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+            }
+
+            50% {
+              transform: scale(1.1);
+              box-shadow: 0 0 30px rgba(239, 68, 68, 0.8);
+            }
+
+            100% {
+              transform: scale(1);
+              box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+            }
           }
         </style>
 
@@ -4189,7 +4238,7 @@
               this.countdownInterval = null;
               this.countdown = 5;
               this.isMapReady = false;
-              
+
               // Wait for DOM and ensure container is ready
               this.initializeWhenReady();
             }
@@ -4211,15 +4260,15 @@
             initializeMap() {
               try {
                 const mapContainer = document.getElementById('map');
-                
+
                 // Clear any existing map
                 if (this.map) {
                   this.map.remove();
                 }
-                
+
                 // Clear container
                 mapContainer.innerHTML = '';
-                
+
                 // Initialize the map with mobile-friendly options
                 this.map = L.map('map', {
                   center: [20, 0],
@@ -4238,22 +4287,22 @@
 
                 // Add HTTPS tile layer (works on all devices)
                 L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-                  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+                  // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
                   subdomains: 'abcd',
-                  maxZoom: 19
+                  maxZoom: 10
                 }).addTo(this.map);
 
                 // Wait for map to be ready
                 this.map.whenReady(() => {
                   this.isMapReady = true;
-                  
+
                   // Hide loading indicator
                   const loadingDiv = document.getElementById('mapLoading');
                   if (loadingDiv) {
                     loadingDiv.style.opacity = '0';
                     setTimeout(() => loadingDiv.remove(), 300);
                   }
-                  
+
                   // Force a resize to fix any rendering issues
                   setTimeout(() => {
                     this.map.invalidateSize();
@@ -4269,11 +4318,11 @@
             showMapError() {
               const mapContainer = document.getElementById('map');
               const loadingDiv = document.getElementById('mapLoading');
-              
+
               if (loadingDiv) {
                 loadingDiv.remove();
               }
-              
+
               mapContainer.innerHTML = `
                 <div class="flex items-center justify-center h-full bg-gray-900/90 rounded-2xl">
                   <div class="text-center text-gray-400 p-6">
@@ -4296,13 +4345,13 @@
                     'Accept': 'application/json'
                   }
                 });
-                
+
                 if (response.ok) {
                   const data = await response.json();
                   const lat = parseFloat(data.latitude);
                   const lon = parseFloat(data.longitude);
                   const alt = parseFloat(data.altitude);
-                  
+
                   this.updatePosition(lat, lon, alt);
                   this.updateLocationInfo(lat, lon);
                 } else {
@@ -4320,15 +4369,15 @@
               const startTime = 1609459200000; // Jan 1, 2021 as reference
               const period = 5580000; // 93 minutes in milliseconds
               const elapsed = (now - startTime) / period;
-              
+
               // ISS orbital parameters
               const inclination = 51.6 * Math.PI / 180; // Convert to radians
               const angle = (elapsed * 2 * Math.PI) % (2 * Math.PI);
-              
+
               const lat = Math.asin(Math.sin(inclination) * Math.sin(angle)) * 180 / Math.PI;
               const lon = ((elapsed * 360) % 360) - 180;
               const alt = 408; // Approximate altitude
-              
+
               this.updatePosition(lat, lon, alt);
               this.updateLocationInfo(lat, lon);
             }
@@ -4354,7 +4403,7 @@
                     iconSize: [24, 24],
                     iconAnchor: [12, 12]
                   });
-                  
+
                   this.issMarker = L.marker([lat, lon], { icon: issIcon })
                     .addTo(this.map)
                     .bindPopup(`
@@ -4381,7 +4430,7 @@
                 if (this.pathPolyline) {
                   this.map.removeLayer(this.pathPolyline);
                 }
-                
+
                 if (this.issPath.length > 1) {
                   this.pathPolyline = L.polyline(this.issPath, {
                     color: '#fbbf24',
@@ -4399,12 +4448,12 @@
             updateLocationInfo(lat, lon) {
               // Update region and time info
               this.updateRegion(lat, lon);
-              
+
               // Update local time (simplified)
               const now = new Date();
               const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
               const localTime = new Date(utc);
-              
+
               document.getElementById('timezone').textContent = 'UTC';
               document.getElementById('localTime').textContent = localTime.toLocaleTimeString('en-US', {
                 hour12: false,
@@ -4416,7 +4465,7 @@
 
             updateRegion(lat, lon) {
               let region = 'Ocean/Open Sea';
-              
+
               // Enhanced region detection
               if (lat > 66.5) {
                 region = 'Arctic Ocean';
@@ -4437,14 +4486,14 @@
               } else if (lat > 40 && lon > 75 && lon < 180) {
                 region = 'North Asia/Siberia';
               }
-              
+
               document.getElementById('region').textContent = region;
             }
 
             startTracking() {
               // Initial fetch
               this.fetchISSPosition();
-              
+
               // Update every 10 seconds (reduced frequency for better performance)
               this.updateInterval = setInterval(() => {
                 this.fetchISSPosition();
@@ -4457,7 +4506,7 @@
               this.countdownInterval = setInterval(() => {
                 document.getElementById('nextUpdate').textContent = `${this.countdown}s`;
                 this.countdown--;
-                
+
                 if (this.countdown < 0) {
                   this.countdown = 10;
                 }
@@ -4482,7 +4531,7 @@
 
           // Initialize ISS Tracker when page loads
           let issTracker = null;
-          
+
           // Multiple initialization attempts to ensure it works
           function initTracker() {
             if (issTracker) {
@@ -4499,7 +4548,7 @@
           }
 
           // Handle page visibility changes (mobile optimization)
-          document.addEventListener('visibilitychange', function() {
+          document.addEventListener('visibilitychange', function () {
             if (document.visibilityState === 'visible' && issTracker) {
               // Refresh when page becomes visible again
               setTimeout(() => {
@@ -4511,7 +4560,7 @@
           });
 
           // Handle resize events (mobile orientation changes)
-          window.addEventListener('resize', function() {
+          window.addEventListener('resize', function () {
             if (issTracker && issTracker.map) {
               setTimeout(() => {
                 issTracker.map.invalidateSize();
@@ -4520,7 +4569,7 @@
           });
 
           // Cleanup on page unload
-          window.addEventListener('beforeunload', function() {
+          window.addEventListener('beforeunload', function () {
             if (issTracker) {
               issTracker.destroy();
             }
@@ -4528,57 +4577,867 @@
         </script>
       </section>
 
-      <!-- CONTACT / LEARN MORE -->
-      <section id="contact" class="py-20">
-        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-8">
-          <div>
-            <h2 class="text-3xl font-bold text-blue-300">Contact & Learn More</h2>
-            <p class="text-gray-300 mt-3">Official resources, downloadable documents, and ways to learn more about ISS
-              science and missions.</p>
+      <section id="gallery" class="relative py-24 overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 bg-gradient-to-br from-black via-black to-black">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-blue-black to-black/60"></div>
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_100%)]">
+          </div>
+          <div class="stars absolute inset-"></div>
+        </div>
 
-            <ul class="mt-6 space-y-3 text-gray-300">
-              <li><a href="https://www.nasa.gov/station" target="_blank" rel="noreferrer" class="hover:underline">NASA —
-                  International Space Station</a></li>
-              <li><a
-                  href="https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/International_Space_Station"
-                  target="_blank" rel="noreferrer" class="hover:underline">ESA — ISS Overview</a></li>
-              <li><a href="https://www.nasa.gov/mission_pages/station/research" target="_blank" rel="noreferrer"
-                  class="hover:underline">NASA — Research on ISS (experiments)</a></li>
-              <li><a href="#" id="downloadPDF" class="hover:underline">Download: ISS Fact Sheet (placeholder)</a></li>
-            </ul>
+        <div class="relative container mx-auto px-6">
+          <!-- Enhanced Header -->
+          <div class="text-center mb-16">
+            <div
+              class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mb-6 animate-pulse">
+              <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+              </svg>
+            </div>
+            <h2
+              class="text-5xl font-bold bg-gradient-to-r from-blue-400 via-cyan-300 to-blue-300 bg-clip-text text-transparent mb-4">
+              ISS Gallery
+            </h2>
+            <p class="text-xl text-justify text-gray-300 max-w-2xl mx-auto leading-relaxed">
+              Journey through the cosmos with breathtaking imagery from humanity's greatest achievement in space
+            </p>
+            <div class="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto mt-6 rounded-full"></div>
           </div>
 
-          <div>
-            <h3 class="font-semibold text-white">Contact / Feedback</h3>
-            <form id="contactForm" class="mt-4 grid gap-3">
-              <input name="name" placeholder="Your name" required class="p-3 rounded bg-white/5" />
-              <input name="email" type="email" placeholder="Email" required class="p-3 rounded bg-white/5" />
-              <textarea name="message" rows="4" placeholder="Message / Question" required
-                class="p-3 rounded bg-white/5"></textarea>
-              <div class="flex items-center gap-3">
-                <button type="submit" class="px-4 py-2 bg-blue-600 rounded">Send</button>
-                <div id="contactMsg" class="text-sm text-gray-300" aria-live="polite"></div>
+          <!-- Enhanced Grid -->
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- ISS External View -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden text-align:justify rounded-2xl bg-gradient-to-br from-blue-900/20 to-purple-900/20 backdrop-blur-sm border border-blue-500/20 hover:border-blue-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/3/3f/ISS_from_STS-132.jpg"
+                data-title="ISS External View"
+                data-description="International Space Station photographed from Space Shuttle Atlantis during STS-132 mission, showcasing the magnificent orbital laboratory against the cosmic void.">
+
+                <div
+                  class="absolute inset-0 text-justify bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/ISS_from_STS-132.jpg"
+                    alt="ISS External View"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-blue-600/20 to-transparent group-hover:from-blue-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-blue-300 transition-colors">ISS External
+                      View</h3>
+                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Orbital laboratory in all its glory
+                  </p>
+                </div>
               </div>
-              <div class="text-xs text-gray-500 mt-2">Note: This demo contact form does not submit — add a backend
-                endpoint or use a service (Formspree, Netlify Forms) to enable.</div>
-            </form>
+            </div>
+
+            <!-- Expedition Crew -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-purple-500/20 hover:border-purple-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/8/8a/Expedition_47_crew_portrait.jpg"
+                data-title="Expedition 47 Crew"
+                data-description="International crew portrait representing the pinnacle of human cooperation in space exploration, bringing together astronauts from different nations united in scientific discovery.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Expedition_47_crew_portrait.jpg"
+                    alt="ISS Crew"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-purple-600/20 to-transparent group-hover:from-purple-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-purple-300 transition-colors">Expedition 47
+                      Crew</h3>
+                    <div class="flex space-x-1">
+                      <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse"></div>
+                      <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse delay-100"></div>
+                      <div class="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse delay-200"></div>
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    International space heroes united
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Columbus Module -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-cyan-900/20 to-teal-900/20 backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-cyan-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/6/6f/Columbus_module.jpg"
+                data-title="Columbus Laboratory"
+                data-description="Europe's premier contribution to the International Space Station - a state-of-the-art research facility conducting groundbreaking experiments in microgravity.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Columbus_module.jpg"
+                    alt="Columbus Module"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-cyan-600/20 to-transparent group-hover:from-cyan-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">Columbus
+                      Laboratory</h3>
+                    <div class="w-3 h-3 border-2 border-cyan-400 rounded-full animate-spin"></div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    European scientific excellence
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Solar Array Maintenance -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-900/20 to-red-900/20 backdrop-blur-sm border border-orange-500/20 hover:border-orange-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/4/4e/STS-120_EVA_Tani_solar_array.jpg"
+                data-title="Solar Array Maintenance"
+                data-description="Astronaut performing critical spacewalk maintenance on ISS solar arrays - the lifeline that powers humanity's most advanced orbital outpost.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/STS-120_EVA_Tani_solar_array.jpg"
+                    alt="Solar Arrays"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-orange-600/20 to-transparent group-hover:from-orange-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-orange-300 transition-colors">Solar
+                      Maintenance</h3>
+                    <div class="w-3 h-3 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full animate-pulse">
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Powering the future of space
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Earth from Space -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-900/20 to-blue-900/20 backdrop-blur-sm border border-green-500/20 hover:border-green-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-green-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+                data-title="Earth from Space"
+                data-description="Our beautiful blue marble suspended in the cosmic void - a humbling reminder of Earth's fragility and the unity of all life on our precious home planet.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+                    alt="Earth from Space"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-green-600/20 to-transparent group-hover:from-blue-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-green-300 transition-colors">Earth from
+                      Space</h3>
+                    <div class="relative">
+                      <div class="w-3 h-3 bg-blue-400 rounded-full"></div>
+                      <div class="absolute inset-0 w-3 h-3 bg-blue-400 rounded-full animate-ping"></div>
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Our beautiful blue marble
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Cupola Observatory -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-900/20 to-purple-900/20 backdrop-blur-sm border border-indigo-500/20 hover:border-indigo-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-indigo-500/25"
+                data-media="https://upload.wikimedia.org/wikipedia/commons/5/52/Cupola_Observatory_on_ISS.jpg"
+                data-title="Cupola Observatory"
+                data-description="The ISS Cupola provides breathtaking 360-degree views of Earth and space - a window to the universe where astronauts witness the majesty of our planet and cosmos.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/52/Cupola_Observatory_on_ISS.jpg"
+                    alt="ISS Cupola"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-indigo-600/20 to-transparent group-hover:from-indigo-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">Cupola
+                      Observatory</h3>
+                    <div class="flex space-x-1">
+                      <div class="w-1 h-6 bg-gradient-to-t from-indigo-600 to-indigo-300 rounded-full animate-pulse">
+                      </div>
+                      <div
+                        class="w-1 h-4 bg-gradient-to-t from-indigo-600 to-indigo-300 rounded-full animate-pulse delay-100">
+                      </div>
+                      <div
+                        class="w-1 h-5 bg-gradient-to-t from-indigo-600 to-indigo-300 rounded-full animate-pulse delay-200">
+                      </div>
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Window to the universe
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dragon Capsule -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl text-align:justify bg-gradient-to-br from-red-900/20 to-pink-900/20 backdrop-blur-sm border border-red-500/20 hover:border-red-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/25"
+                data-media="https://cdn.mos.cms.futurecdn.net/AZGdULDpttqCgy59gyiDaf.jpg"
+                data-title="Dragon Capsule Approach"
+                data-description="SpaceX Dragon capsule gracefully approaches the ISS, representing the new era of commercial spaceflight and the future of cargo and crew transportation.">
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://i.insider.com/5c7a398ebde70f7ba179fc57?width=700" alt="Dragon Approach"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-red-600/20 to-transparent group-hover:from-red-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-red-300 transition-colors">Dragon Approach
+                    </h3>
+                    <div class="relative">
+                      <div class="w-3 h-3 bg-red-500 rounded-full animate-bounce"></div>
+                      <div class="absolute -top-1 -right-1 w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Commercial spaceflight era
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ISS Configuration -->
+            <div class="gallery-item group cursor-pointer">
+              <div
+                class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-900/20 to-orange-900/20 backdrop-blur-sm border border-yellow-500/20 hover:border-yellow-400/50 transition-all duration-500 hover:shadow-2xl hover:shadow-yellow-500/25"
+                data-media="https://i.pinimg.com/736x/f4/9a/f7/f49af7ed869d181c600e438ddcd83bc5.jpg"
+                data-title="ISS Configuration"
+                data-description="Detailed technical diagram showcasing the intricate modular architecture of the International Space Station - decades of engineering excellence assembled in orbit.">
+
+                <div class="absolute top-3 right-3 z-30">
+                  <span
+                    class="bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-xs px-3 py-1 rounded-full font-bold animate-pulse">
+                    BLUEPRINT
+                  </span>
+                </div>
+
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10">
+                </div>
+
+                <div class="relative overflow-hidden rounded-xl m-3">
+                  <img src="https://ih1.redbubble.net/image.5346485475.8405/flat,750x,075,f-pad,750x1000,f8f8f8.jpg"
+                    alt="ISS Configuration"
+                    class="w-full h-48 object-cover transform group-hover:scale-110 transition-transform duration-700" />
+                  <div
+                    class="absolute inset-0 bg-gradient-to-t from-yellow-600/20 to-transparent group-hover:from-yellow-500/30 transition-all duration-500">
+                  </div>
+                </div>
+
+                <div class="p-5 relative z-20">
+                  <div class="flex items-center justify-between mb-3">
+                    <h3 class="text-lg font-bold text-white group-hover:text-yellow-300 transition-colors">ISS
+                      Configuration</h3>
+                    <div class="grid grid-cols-2 gap-1">
+                      <div class="w-1 h-1 bg-yellow-400 animate-pulse"></div>
+                      <div class="w-1 h-1 bg-yellow-400 animate-pulse delay-100"></div>
+                      <div class="w-1 h-1 bg-yellow-400 animate-pulse delay-200"></div>
+                      <div class="w-1 h-1 bg-yellow-400 animate-pulse delay-300"></div>
+                    </div>
+                  </div>
+                  <p
+                    class="text-gray-400 text-sm leading-relaxed transform translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                    Engineering masterpiece blueprint
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- Enhanced Lightbox -->
+        <div id="lightbox"
+          class="fixed inset-0 bg-black/95 backdrop-blur-xl z-[100] opacity-0 invisible transition-all duration-500">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-indigo-900/20"></div>
+
+          <button id="closeLightbox" class="absolute top-6 right-6 z-50 group">
+            <div
+              class="w-12 h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center hover:bg-white/20 hover:border-white/30 transition-all duration-300 group-hover:scale-110">
+              <svg class="w-6 h-6 text-white group-hover:text-gray-200" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            </div>
+          </button>
+
+          <div class="flex items-center justify-center min-h-screen p-8">
+            <div class="relative max-w-6xl w-full">
+              <div
+                class="bg-gray-900/80 backdrop-blur-xl border border-gray-700/50 rounded-3xl overflow-hidden shadow-2xl transform scale-90 transition-transform duration-500">
+                <div class="relative">
+                  <img id="lightboxImage" src="" alt="" class="w-full max-h-[70vh] object-contain" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
+                </div>
+
+                <div class="p-8">
+                  <h3 id="lightboxTitle"
+                    class="text-3xl font-bold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent mb-4">
+                  </h3>
+                  <p id="lightboxDescription" class="text-gray-300 leading-relaxed text-lg"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>
+          @keyframes float {
+
+            0%,
+            100% {
+              transform: translateY(0px);
+            }
+
+            50% {
+              transform: translateY(-10px);
+            }
+          }
+
+          @keyframes twinkle {
+
+            0%,
+            100% {
+              opacity: 0;
+            }
+
+            50% {
+              opacity: 1;
+            }
+          }
+
+          .stars {
+            background-image:
+              radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+              radial-gradient(2px 2px at 40px 70px, rgba(255, 255, 255, 0.8), transparent),
+              radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+              radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.6), transparent),
+              radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 100px;
+            animation: twinkle 4s ease-in-out infinite alternate;
+          }
+
+          .gallery-item {
+            animation: float 6s ease-in-out infinite;
+          }
+
+          .gallery-item:nth-child(2n) {
+            animation-delay: -2s;
+          }
+
+          .gallery-item:nth-child(3n) {
+            animation-delay: -4s;
+          }
+
+          #lightbox.show {
+            opacity: 1;
+            visibility: visible;
+          }
+
+          #lightbox.show .bg-gray-900\/80 {
+            transform: scale(1);
+          }
+
+          .gallery {
+            text-align: justify;
+          }
+        </style>
+
+        <script>
+          const galleryItems = document.querySelectorAll('.gallery-item > div');
+          const lightbox = document.getElementById('lightbox');
+          const lightboxImage = document.getElementById('lightboxImage');
+          const lightboxTitle = document.getElementById('lightboxTitle');
+          const lightboxDescription = document.getElementById('lightboxDescription');
+          const closeLightbox = document.getElementById('closeLightbox');
+
+          galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+              const mediaSrc = item.getAttribute('data-media');
+              const title = item.getAttribute('data-title');
+              const description = item.getAttribute('data-description');
+
+              lightboxImage.src = mediaSrc;
+              lightboxImage.alt = title;
+              lightboxTitle.textContent = title;
+              lightboxDescription.textContent = description;
+
+              lightbox.classList.add('show');
+              document.body.style.overflow = 'hidden';
+            });
+          });
+
+          function closeLightboxModal() {
+            lightbox.classList.remove('show');
+            document.body.style.overflow = 'auto';
+          }
+
+          closeLightbox.addEventListener('click', closeLightboxModal);
+
+          lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+              closeLightboxModal();
+            }
+          });
+
+          document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+              closeLightboxModal();
+            }
+          });
+        </script>
       </section>
 
+      <!-- CONTACT / LEARN MORE -->
+      <section id="contact" class="py-24 relative overflow-hidden">
+        <!-- Animated Black Background with Space Effect -->
+        <div class="absolute inset-0 bg-black">
+          <div class="absolute inset-0 bg-black animate-pulse">
+          </div>
+          <div
+            class="absolute inset-0 bg-gradient-to-tl from-blue-900/10 via-transparent to-purple-900/20 animate-pulse"
+            style="animation-delay: 1s;"></div>
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-blue-500/5 to-transparent opacity-30 animate-pulse"
+            style="animation-delay: 2s;"></div>
+        </div>
+
+        <!-- Animated Stars Background -->
+        <div class="absolute inset-0 overflow-hidden">
+          <div id="stars-container" class="w-full h-full"></div>
+        </div>
+
+        <div class="container mx-auto px-6 max-w-6xl relative z-10">
+          <!-- Header -->
+          <div class="text-center mb-16">
+            <h2
+              class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
+              Resources & Contact
+            </h2>
+            <p class="text-xl text-gray-300 mt-4 max-w-3xl mx-auto leading-relaxed">
+              Access official documentation, research publications, and connect with our mission specialists for
+              inquiries about ISS operations and scientific endeavors.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-12 items-start">
+            <!-- Resources Section -->
+            <div
+              class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/30 transition-all duration-300">
+              <div class="flex items-center gap-3 mb-6">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                    </path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Official Resources</h3>
+              </div>
+
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Comprehensive documentation and real-time data from leading space agencies and research institutions.
+              </p>
+
+              <div class="space-y-4">
+                <a href="https://www.nasa.gov/station" target="_blank" rel="noreferrer"
+                  class="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                  <div
+                    class="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center group-hover:bg-blue-600/30 transition-colors">
+                    <svg class="w-5 h-5 text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <path fill="white" d="M8 12h8M12 8v8" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white group-hover:text-blue-300 transition-colors">NASA International
+                      Space Station</div>
+                    <div class="text-sm text-gray-400">Official mission updates and operations</div>
+                  </div>
+                </a>
+
+                <a href="https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/International_Space_Station"
+                  target="_blank" rel="noreferrer"
+                  class="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                  <div
+                    class="w-10 h-10 bg-cyan-600/20 rounded-lg flex items-center justify-center group-hover:bg-cyan-600/30 transition-colors">
+                    <svg class="w-5 h-5 text-cyan-400" fill="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <path fill="white" d="M8 12h8M12 8v8" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white group-hover:text-cyan-300 transition-colors">European Space
+                      Agency</div>
+                    <div class="text-sm text-gray-400">ISS research and exploration programs</div>
+                  </div>
+                </a>
+
+                <a href="https://www.nasa.gov/mission_pages/station/research" target="_blank" rel="noreferrer"
+                  class="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                  <div
+                    class="w-10 h-10 bg-purple-600/20 rounded-lg flex items-center justify-center group-hover:bg-purple-600/30 transition-colors">
+                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white group-hover:text-purple-300 transition-colors">Research &
+                      Experiments</div>
+                    <div class="text-sm text-gray-400">Scientific investigations and findings</div>
+                  </div>
+                </a>
+
+                <a href="https://global.jaxa.jp/projects/iss/" target="_blank" rel="noreferrer"
+                  class="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                  <div
+                    class="w-10 h-10 bg-red-600/20 rounded-lg flex items-center justify-center group-hover:bg-red-600/30 transition-colors">
+                    <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="10" />
+                      <path fill="white" d="M8 12h8M12 8v8" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white group-hover:text-red-300 transition-colors">Japan Aerospace
+                      Exploration Agency</div>
+                    <div class="text-sm text-gray-400">JAXA ISS operations and Kibo laboratory</div>
+                  </div>
+                </a>
+
+                <a href="https://www.iafastro.org/membership/all-members/roscosmos.html" target="_blank"
+                  rel="noreferrer"
+                  class="flex items-center gap-4 p-4 bg-white/5 rounded-xl hover:bg-white/10 transition-all duration-200 group">
+                  <div
+                    class="w-10 h-10 bg-orange-600/20 rounded-lg flex items-center justify-center group-hover:bg-orange-600/30 transition-colors">
+                    <svg class="w-5 h-5 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <div class="font-semibold text-white group-hover:text-orange-300 transition-colors">Russian Space
+                      Agency (Roscosmos)</div>
+                    <div class="text-sm text-gray-400">ISS Russian segment and crew operations</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form Section -->
+            <div
+              class="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-blue-400/30 transition-all duration-300">
+              <div class="flex items-center gap-3 mb-6">
+                <div
+                  class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                  <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-white">Professional Inquiries</h3>
+              </div>
+
+              <p class="text-gray-300 mb-6 leading-relaxed">
+                Connect with our mission specialists for research collaboration, educational partnerships, or technical
+                consultations.
+              </p>
+
+              <form id="contactForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-4">
+                  <div class="relative">
+                    <input name="name" type="text" placeholder="Full Name" required
+                      class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200" />
+                  </div>
+                  <div class="relative">
+                    <input name="organization" type="text" placeholder="Organization"
+                      class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200" />
+                  </div>
+                </div>
+
+                <div class="relative">
+                  <input name="email" type="email" placeholder="Email Address" required
+                    class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200" />
+                </div>
+
+                <div class="relative">
+                  <select name="inquiry_type" required
+                    class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200">
+                    <option value="" disabled selected class="text-gray-400">Select Inquiry Type</option>
+                    <option value="research" class="text-black">Research Collaboration</option>
+                    <option value="education" class="text-black">Educational Partnership</option>
+                    <option value="technical" class="text-black">Technical Consultation</option>
+                    <option value="media" class="text-black">Media & Press</option>
+                    <option value="general" class="text-black">General Information</option>
+                  </select>
+                </div>
+
+                <div class="relative">
+                  <textarea name="message" rows="5" placeholder="Detailed message or inquiry" required
+                    class="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-400/20 transition-all duration-200 resize-vertical"></textarea>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                  <button type="submit"
+                    class="px-8 py-4 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white font-semibold rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Send Message
+                  </button>
+                  <div id="contactMsg" class="text-sm text-gray-300 flex-1" aria-live="polite"></div>
+                </div>
+
+                <div class="text-xs text-gray-500 bg-gray-900/30 p-3 rounded-lg border-l-4 border-yellow-500/50">
+                  <strong>Note:</strong> This is a demonstration form. To enable functionality, integrate with a backend
+                  service such as Formspree, Netlify Forms, or your preferred form handling solution.
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <script>
+          // Create animated blinking stars background
+          function createStarsBackground() {
+            const container = document.getElementById('stars-container');
+            const numStars = 150;
+
+            for (let i = 0; i < numStars; i++) {
+              const star = document.createElement('div');
+              star.className = 'absolute rounded-full bg-white star';
+
+              // Random position
+              star.style.left = Math.random() * 100 + '%';
+              star.style.top = Math.random() * 100 + '%';
+
+              // Random size (1px to 3px)
+              const size = Math.random() * 2 + 1;
+              star.style.width = size + 'px';
+              star.style.height = size + 'px';
+
+              // Random blinking animation delay and duration
+              const delay = Math.random() * 3;
+              const duration = Math.random() * 2 + 1;
+              star.style.animation = `starBlink ${duration}s ease-in-out ${delay}s infinite`;
+
+              container.appendChild(star);
+            }
+          }
+
+          // Add CSS for star blinking animation and background effects
+          const style = document.createElement('style');
+          style.textContent = `
+      @keyframes starBlink {
+        0%, 100% { opacity: 0.3; }
+        50% { opacity: 1; }
+      }
+      
+      @keyframes spaceGlow {
+        0%, 100% { 
+          background: radial-gradient(circle at 20% 30%, rgba(0, 0, 0, 0.8) 0%, rgba(59, 130, 246, 0.1) 30%, transparent 50%),
+                      radial-gradient(circle at 80% 70%, rgba(0, 0, 0, 0.9) 0%, rgba(147, 51, 234, 0.1) 30%, transparent 50%),
+                      radial-gradient(circle at 40% 80%, rgba(0, 0, 0, 0.95) 0%, rgba(16, 185, 129, 0.05) 30%, transparent 50%);
+        }
+        33% { 
+          background: radial-gradient(circle at 60% 20%, rgba(0, 0, 0, 0.85) 0%, rgba(147, 51, 234, 0.15) 30%, transparent 50%),
+                      radial-gradient(circle at 30% 60%, rgba(0, 0, 0, 0.9) 0%, rgba(59, 130, 246, 0.1) 30%, transparent 50%),
+                      radial-gradient(circle at 70% 90%, rgba(0, 0, 0, 0.92) 0%, rgba(16, 185, 129, 0.08) 30%, transparent 50%);
+        }
+        66% { 
+          background: radial-gradient(circle at 90% 40%, rgba(0, 0, 0, 0.88) 0%, rgba(16, 185, 129, 0.1) 30%, transparent 50%),
+                      radial-gradient(circle at 10% 80%, rgba(0, 0, 0, 0.9) 0%, rgba(147, 51, 234, 0.12) 30%, transparent 50%),
+                      radial-gradient(circle at 50% 10%, rgba(0, 0, 0, 0.93) 0%, rgba(59, 130, 246, 0.08) 30%, transparent 50%);
+        }
+      }
+      
+      @keyframes nebula {
+        0%, 100% { 
+          transform: translateX(0) translateY(0) scale(1);
+          opacity: 0.2;
+        }
+        25% { 
+          transform: translateX(10px) translateY(-5px) scale(1.05);
+          opacity: 0.25;
+        }
+        50% { 
+          transform: translateX(-5px) translateY(10px) scale(0.95);
+          opacity: 0.3;
+        }
+        75% { 
+          transform: translateX(-10px) translateY(-8px) scale(1.02);
+          opacity: 0.22;
+        }
+      }
+      
+      .star {
+        box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+      }
+      
+      #contact::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: black;
+        animation: spaceGlow 8s ease-in-out infinite;
+        z-index: 1;
+      }
+      
+      #contact::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          radial-gradient(ellipse at 20% 40%, rgba(0, 0, 0, 0.9) 0%, rgba(99, 102, 241, 0.08) 40%, transparent 60%),
+          radial-gradient(ellipse at 80% 60%, rgba(0, 0, 0, 0.92) 0%, rgba(168, 85, 247, 0.06) 40%, transparent 60%),
+          radial-gradient(ellipse at 40% 20%, rgba(0, 0, 0, 0.95) 0%, rgba(34, 197, 94, 0.04) 40%, transparent 60%);
+        animation: nebula 12s ease-in-out infinite;
+        z-index: 1;
+      }
+    `;
+          document.head.appendChild(style);
+
+          // Initialize stars when page loads
+          createStarsBackground();
+          // Enhanced form handling with professional features
+          document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const msgElement = document.getElementById('contactMsg');
+            const submitButton = e.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.textContent;
+
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            submitButton.classList.add('opacity-50');
+
+            msgElement.textContent = 'Processing your inquiry...';
+            msgElement.className = 'text-sm text-blue-400 flex-1';
+
+            // Simulate form processing
+            setTimeout(() => {
+              msgElement.textContent = 'Thank you for your inquiry. Our team will respond within 24 hours.';
+              msgElement.className = 'text-sm text-green-400 flex-1';
+
+              // Reset button
+              submitButton.disabled = false;
+              submitButton.textContent = originalText;
+              submitButton.classList.remove('opacity-50');
+
+              // Reset form after success message
+              setTimeout(() => {
+                this.reset();
+                msgElement.textContent = '';
+              }, 3000);
+            }, 2000);
+          });
+        </script>
+      </section>
     </main>
 
     <!-- FOOTER -->
-    <footer class="bg-black/70 border-t border-white/5 py-6">
-      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-        <div class="text-sm text-gray-400">&copy; 2025 ISS Explorer. Educational demo — not affiliated with any agency.
+    <footer class="bg-black/80 border-t border-white/10 py-8 text-gray-300">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+        <!-- Left Section -->
+        <div class="text-center md:text-left text-sm leading-relaxed">
+          <p class="font-medium text-gray-200">&copy; 2025 ISS Explorer</p>
+          <p class="text-gray-400">An educational demonstration project — not affiliated with any official space agency.
+            Designed by Tuhin Paul.</p>
         </div>
-        <div class="flex gap-3">
-          <a href="#" class="text-sm hover:text-blue-300">Privacy</a>
-          <a href="#" class="text-sm hover:text-blue-300">Credits</a>
+
+        <!-- Right Section -->
+        <div class="flex gap-6 text-sm">
+          <a href="#" class="hover:text-blue-400 transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-blue-400 transition-colors">Terms of Use</a>
+          <a href="#" class="hover:text-blue-400 transition-colors">Credits</a>
         </div>
       </div>
     </footer>
+
 
     <!-- LIGHTBOX / MODALS (hidden) -->
     <div id="modalRoot" class="fixed inset-0 z-60 hidden items-center justify-center p-6">
